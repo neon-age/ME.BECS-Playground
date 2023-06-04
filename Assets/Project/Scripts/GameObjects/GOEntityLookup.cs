@@ -6,7 +6,7 @@ using UnityEngine;
 
 public static class GOEntityLookup
 {
-    public static Dictionary<Transform, ulong> TransformToEnt = new Dictionary<Transform, ulong>();
+    public static Dictionary<Transform, Ent> TransformToEnt = new Dictionary<Transform, Ent>();
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
     static void OnLoad()
@@ -17,12 +17,12 @@ public static class GOEntityLookup
     [MethodImpl(256)]
     public static Ent GetEntity(Transform trs)
     {
-        if (!TransformToEnt.TryGetValue(trs, out var id))
+        if (!TransformToEnt.TryGetValue(trs, out var ent))
         {
-            var ent = Ent.New();
-            TransformToEnt.Add(trs, id = ent.ToULong());
+            ent = Ent.New();
+            TransformToEnt.Add(trs, ent);
         }
-        return new Ent(id);
+        return ent;
     }
     [MethodImpl(256)]
     public static Ent GetEntity(this GameObject go)

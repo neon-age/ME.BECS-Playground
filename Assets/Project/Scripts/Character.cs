@@ -27,9 +27,6 @@ public class Character : MonoBehaviour
         {
             weapon = weapon.ent
         });
-        ent.GetAspect<TransformAspect>();
         config.Apply(ent);
-
-        GOTransformSystem.Register(ent, transform);
     }
 }

@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using ME.BECS;
 using ME.BECS.Addons;
+using ME.BECS.Jobs;
 using ME.BECS.TransformAspect;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
+using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Jobs;
@@ -35,78 +37,164 @@ public struct GOTransform : IComponent
 public struct GOTransformSystem : IUpdate, IDestroy
 {
     TransformAccessArray transformAccessArray;
+    UnsafeParallelHashMap<Ent, byte> registeredTransforms;
 
     public void OnDestroy(ref SystemContext context)
     {
         transformAccessArray.Dispose();
+        registeredTransforms.Dispose();
+        Debug.Log($"dispose");
     }
 
-    void ValidateTransformArray()
+    void ValidateInitialization() // this will run before IAwake from other systems
     {
         if (!transformAccessArray.isCreated)
+        {
+            Debug.Log("validate");
             transformAccessArray = new TransformAccessArray(100);
+            registeredTransforms = new UnsafeParallelHashMap<Ent, byte>(100, Allocator.Persistent);
+        }
     }
 
-    public static void Register(Ent ent, Transform transform)
+    public static TransformAspect Register(Ent ent, Transform transform)
     {
+        Debug.Log(Context.world.id);
+        if (!Context.world.isCreated)
+            return default;
+
         ref var system = ref Context.world.GetSystem<GOTransformSystem>();
+        system.ValidateInitialization();
 
-        system.ValidateTransformArray();
+        //if (system.registeredTransforms.ContainsKey(ent))
+        //    return default;
+
+        var localPos = transform.localPosition;
+        var localRot = transform.localRotation;
+        var localScale = transform.localScale;
+
+        var trsAspect = ent.GetAspect<TransformAspect>();
+        trsAspect.localPosition = localPos;
+        trsAspect.localRotation = localRot;
+        trsAspect.localScale = localScale;
+
         system.transformAccessArray.Add(transform);
+        system.registeredTransforms.Add(ent, 0);
 
-        ent.Get<GOTransform>() = new GOTransform 
-        { 
-            index = system.transformAccessArray.length - 1,
-            localPos = transform.localPosition,
-            localRot = transform.localRotation,
-            localScale = transform.localScale
-        };
+        ref var goTrs = ref ent.Get<GOTransform>();
+
+        goTrs.index = system.transformAccessArray.length - 1;
+        goTrs.localPos = localPos;
+        goTrs.localRot = localRot;
+        goTrs.localScale = localScale;
+
+        Debug.Log($"reg {transform} {trsAspect.localPosition} {ent}");
+        return trsAspect;
     }
     public static void Unregister(Ent ent)
     {
+        if (!Context.world.isCreated)
+            return;
+        Debug.Log($"del {ent}");
         ref var system = ref Context.world.GetSystem<GOTransformSystem>();
+        if (!system.registeredTransforms.ContainsKey(ent))
+            return;
+        
         var go = ent.Read<GOTransform>();
         system.transformAccessArray.RemoveAtSwapBack(go.index);
     }
 
-    
     public void OnUpdate(ref SystemContext context)
     {
-        var entities = new UnsafeList<Ent>(transformAccessArray.length, Allocator.TempJob);
+        Debug.Log(Context.world.id);
+        Debug.Log("init");
+        var entities = new NativeList<Ent>(transformAccessArray.length, Allocator.TempJob);
 
-        var getEntitiesHandle = API.Query(context)
+        Debug.Log($"{transformAccessArray.length} {entities.Length}");
+
+        var query = API.Query(context)
         .With<GOTransform>()
-        .WithAspect<TransformAspect>()
-        .ForEach((in CommandBufferJob buffer) => 
+        .WithAspect<TransformAspect>();
+
+        foreach (var ent in query)
+        {
+            entities.Add(ent);
+            Debug.Log(ent);
+        }
+        //.Schedule(new CollectEntities() { entities = entities });
+
+        var job = new ApplyTransformJob { entities = entities };
+
+        var handle = job.Schedule(transformAccessArray);
+        handle = entities.Dispose(handle);
+        context.SetDependency(handle);
+    }
+
+    [BurstCompile]
+    struct CollectEntities : IJobCommandBuffer
+    {
+        public NativeList<Ent> entities;
+
+        public void Execute(in CommandBufferJob buffer)
         {
             entities.Add(buffer.ent);
-        });
-        var job = new ApplyTransformJob { entities = entities };
-        
-        var handle = job.Schedule(transformAccessArray, getEntitiesHandle);
-        context.SetDependency(handle);
+        }
     }
 
     [BurstCompile]
     struct ApplyTransformJob : IJobParallelForTransform
     {
-        [DeallocateOnJobCompletion]
-        public UnsafeList<Ent> entities;
+        [ReadOnly]
+        public NativeList<Ent> entities;
         
         public void Execute(int index, TransformAccess transform)
         {
             var ent = entities[index];
 
             var trsAspect = ent.GetAspect<TransformAspect>();
-            var goRead = ent.Read<GOTransform>();
+            ref var goRead = ref ent.Get<GOTransform>();
 
-            var newLocalPos = trsAspect.readLocalPosition;
-            var newLocalRot = trsAspect.readLocalRotation;
-            var newLocalScale = trsAspect.readLocalScale;
+            var newLocalPos = trsAspect.localPosition;
+            var newLocalRot = trsAspect.localRotation;
+            var newLocalScale = trsAspect.localScale;
     
             var entityPosChanged = !goRead.localPos.Equals(newLocalPos);
             var entityRotChanged = !goRead.localRot.Equals(newLocalRot);
             var entityScaleChanged = !goRead.localScale.Equals(newLocalScale);
+
+            
+            {
+                // sync transform to game-object entity
+                if (entityPosChanged && entityRotChanged)
+                {
+                    transform.SetLocalPositionAndRotation(newLocalPos, newLocalRot);
+                    Debug.Log($"to GO PosRot change {newLocalPos} {newLocalRot}");
+                    goRead.localPos = newLocalPos;
+                    goRead.localRot = newLocalRot;
+                    //ent.Set(goRead); // increment version
+                }
+                else if (entityPosChanged)
+                {
+                    Debug.Log($"to GO Pos change {newLocalPos}");
+                    transform.localPosition = newLocalPos;
+                    goRead.localPos = newLocalPos; 
+                    //ent.Set(goRead);
+                }
+                else if (entityRotChanged)
+                {
+                    //Debug.Log($"to GO Rot change {newLocalRot}");
+                    transform.localRotation = newLocalRot;
+                    goRead.localRot = newLocalRot;
+                    //ent.Set(goRead);
+                }
+        
+                if (entityScaleChanged)
+                {
+                    //Debug.Log($"to GO Scale change {newLocalScale}");
+                    transform.localScale = newLocalScale;
+                    goRead.localScale = newLocalScale;
+                    //ent.Set(goRead);
+                }
+            }
 
             /* // bad and clumsy idea, instead done via GOEntity parenting and GOSyncTransformToEntitySystem
             if (goRead.syncGO != 0)
@@ -145,40 +233,6 @@ public struct GOTransformSystem : IUpdate, IDestroy
                 //goRead.syncGO = 0;
                 //ent.Set(goRead); // increment version
             }*/
-            //else 
-            {
-                // sync transform to game-object entity
-                if (entityPosChanged && entityRotChanged)
-                {
-                    transform.SetLocalPositionAndRotation(newLocalPos, newLocalRot);
-                    //Debug.Log($"to GO PosRot change {newLocalPos} {newLocalRot}");
-                    goRead.localPos = newLocalPos;
-                    goRead.localRot = newLocalRot;
-                    ent.Set(goRead); // increment version
-                }
-                else if (entityPosChanged)
-                {
-                    //Debug.Log($"to GO Pos change {newLocalPos}");
-                    transform.localPosition = newLocalPos;
-                    goRead.localPos = newLocalPos; 
-                    ent.Set(goRead);
-                }
-                else if (entityRotChanged)
-                {
-                    //Debug.Log($"to GO Rot change {newLocalRot}");
-                    transform.localRotation = newLocalRot;
-                    goRead.localRot = newLocalRot;
-                    ent.Set(goRead);
-                }
-        
-                if (entityScaleChanged)
-                {
-                    //Debug.Log($"to GO Scale change {newLocalScale}");
-                    transform.localScale = newLocalScale;
-                    goRead.localScale = newLocalScale;
-                    ent.Set(goRead);
-                }
-            }
         }
     }
 }

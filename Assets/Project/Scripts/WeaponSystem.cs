@@ -30,10 +30,9 @@ public struct WeaponSystem : IUpdate
         {
             ref var data = ref ent.Get<WeaponData>();
             ref var state = ref ent.Get<WeaponState>();
-
+            
             if (state.fireTime > 0)
                 state.fireTime -= ctx.deltaTime;
-
 
             if (state.fireTime <= 0 && state.shootInput)
             {
@@ -46,7 +45,6 @@ public struct WeaponSystem : IUpdate
                 var bulletTrs = bulletEnt.GetAspect<TransformAspect>();
 
                 bulletEnt.InstantiateView(data.bulletView);
-                // TODO: Doesn't work. Need to sync game-object to entity TransformAspect in GOTransformSystem
                 bulletTrs.localPosition = firePointTrs.GetWorldMatrixPosition();
                 bulletTrs.localRotation = firePointTrs.GetWorldMatrixRotation();
             }

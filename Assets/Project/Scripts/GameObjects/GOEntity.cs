@@ -15,7 +15,7 @@ public class GOEntity : MonoBehaviour
 
     [NonSerialized] public Transform trs;
     
-    void Awake() // first phase
+    void Awake() // first phase, get entities
     {
         trs = transform;
         ent = this.GetEntity();
@@ -27,22 +27,19 @@ public class GOEntity : MonoBehaviour
         }
     }
 
-    void Start() // second phase
+    void Start() // second phase, register transforms
     {
+        GOTransformSystem.Register(ent, trs);
+
         if (!parent.IsEmpty())
         {
-            var trsAspect = ent.GetAspect<TransformAspect>();
-
-            trsAspect.localPosition = transform.localPosition;
-            trsAspect.localRotation = transform.localRotation;
-            trsAspect.localScale = transform.localScale;
-
             ent.SetParent(parent);
         }
     }
 
     void OnDestroy()
     {
+        GOTransformSystem.Unregister(ent);
         GOEntityLookup.RemoveEntity(trs);
     }
 }

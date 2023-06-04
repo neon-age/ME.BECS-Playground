@@ -8,10 +8,8 @@ public struct GOSyncTransformToEntitySystem : IUpdate
 {
     public void OnUpdate(ref SystemContext context)
     {
-        foreach (var (trs, entKey) in GOEntityLookup.TransformToEnt)
+        foreach (var (trs, ent) in GOEntityLookup.TransformToEnt)
         {
-            var ent = new Ent(entKey);
-
             // this could be very slow and buggy, need to find a better way to track changes
             if (trs.hasChanged)
             {
