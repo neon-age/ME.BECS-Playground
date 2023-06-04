@@ -12,6 +12,7 @@ public struct WeaponData : IComponent, IConfigComponent
     public float fireRate;
     public View bulletView;
     public Config bulletConfig;
+    [NonSerialized]
     public Ent firePoint;
 }
 public struct WeaponState : IComponent

@@ -16,7 +16,7 @@ MonoBehaviour:
   data:
     components:
     - rid: 8047813841814552585
-    - rid: 8047813848029724719
+    - rid: 8047813888371589120
     isShared: 0
   sharedData:
     components: []
@@ -34,11 +34,7 @@ MonoBehaviour:
           x: 0
           y: 0
           z: 0
-    - rid: 8047813848029724719
-      type: {class: Character/Data, ns: , asm: NewProject}
+    - rid: 8047813888371589120
+      type: {class: CharacterData, ns: , asm: NewProject}
       data:
-        moveSpeed: 5
-        bulletView:
-          viewSource:
-            providerId: 1
-            prefabId: 2
+        moveSpeed: 10

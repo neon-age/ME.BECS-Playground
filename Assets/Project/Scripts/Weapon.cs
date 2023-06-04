@@ -17,10 +17,5 @@ public class Weapon : MonoBehaviour
 
         ent.Set(weaponData);
         ent.Get<WeaponState>();
-
-        var firePointTrs = firePoint.ent.GetAspect<TransformAspect>();
-        firePointTrs.localPosition = firePoint.trs.localPosition;
-        firePointTrs.localRotation = firePoint.trs.localRotation;
-        firePoint.ent.Get<ParentComponent>().value = ent;
     }
 }

@@ -3,25 +3,28 @@ namespace ME.BECS.Editor {
     public static unsafe class AOTBurstHelper {
         [UnityEngine.Scripting.PreserveAttribute] 
         public static void AOT() {
-            StaticSystemTypes<BulletSystem>.Validate();
-BurstCompileOnUpdateNoBurst<BulletSystem>.MakeMethod(null);
-BurstCompileMethod.MakeUpdate<BulletSystem>(default);
-StaticSystemTypes<WeaponSystem>.Validate();
-BurstCompileOnUpdateNoBurst<WeaponSystem>.MakeMethod(null);
-BurstCompileMethod.MakeUpdate<WeaponSystem>(default);
-StaticSystemTypes<CharacterSystem>.Validate();
-BurstCompileOnUpdateNoBurst<CharacterSystem>.MakeMethod(null);
-BurstCompileMethod.MakeUpdate<CharacterSystem>(default);
-StaticSystemTypes<PlayerInputsSystem>.Validate();
-BurstCompileOnUpdateNoBurst<PlayerInputsSystem>.MakeMethod(null);
-BurstCompileMethod.MakeUpdate<PlayerInputsSystem>(default);
-StaticSystemTypes<GOTransformSystem>.Validate();
+            StaticSystemTypes<GOTransformSystem>.Validate();
 BurstCompileOnUpdate<GOTransformSystem>.MakeMethod(null);
 BurstCompileOnDestroy<GOTransformSystem>.MakeMethod(null);
 BurstCompileOnUpdateNoBurst<GOTransformSystem>.MakeMethod(null);
 BurstCompileOnDestroyNoBurst<GOTransformSystem>.MakeMethod(null);
 BurstCompileMethod.MakeUpdate<GOTransformSystem>(default);
 BurstCompileMethod.MakeDestroy<GOTransformSystem>(default);
+StaticSystemTypes<BulletSystem>.Validate();
+BurstCompileOnUpdateNoBurst<BulletSystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<BulletSystem>(default);
+StaticSystemTypes<GOSyncTransformToEntitySystem>.Validate();
+BurstCompileOnUpdateNoBurst<GOSyncTransformToEntitySystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<GOSyncTransformToEntitySystem>(default);
+StaticSystemTypes<CharacterSystem>.Validate();
+BurstCompileOnUpdateNoBurst<CharacterSystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<CharacterSystem>(default);
+StaticSystemTypes<PlayerInputsSystem>.Validate();
+BurstCompileOnUpdateNoBurst<PlayerInputsSystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<PlayerInputsSystem>(default);
+StaticSystemTypes<WeaponSystem>.Validate();
+BurstCompileOnUpdateNoBurst<WeaponSystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<WeaponSystem>(default);
 StaticSystemTypes<ME.BECS.Tests.Tests_Systems_Graph.TestGraphSystem1_3>.Validate();
 BurstCompileOnAwakeNoBurst<ME.BECS.Tests.Tests_Systems_Graph.TestGraphSystem1_3>.MakeMethod(null);
 BurstCompileOnUpdateNoBurst<ME.BECS.Tests.Tests_Systems_Graph.TestGraphSystem1_3>.MakeMethod(null);
@@ -141,12 +144,12 @@ StaticSystemTypes<ME.BECS.TransformAspect.TransformWorldMatrixUpdateSystem>.Vali
 BurstCompileOnUpdateNoBurst<ME.BECS.TransformAspect.TransformWorldMatrixUpdateSystem>.MakeMethod(null);
 BurstCompileMethod.MakeUpdate<ME.BECS.TransformAspect.TransformWorldMatrixUpdateSystem>(default);
 StaticTypes<CharacterState>.AOT();
+StaticTypes<CharacterData>.AOT();
 StaticTypes<WeaponData>.AOT();
-StaticTypes<Character.Data>.AOT();
+StaticTypes<WeaponState>.AOT();
 StaticTypes<PlayerInputs.Data>.AOT();
 StaticTypes<BulletData>.AOT();
 StaticTypes<GOTransform>.AOT();
-StaticTypes<WeaponState>.AOT();
 StaticTypes<ME.BECS.Views.ViewComponent>.AOT();
 StaticTypes<ME.BECS.Views.IsViewRequested>.AOT();
 StaticTypes<ME.BECS.Views.MeshRendererComponent>.AOT();
@@ -191,11 +194,12 @@ StaticTypesShared<ME.BECS.Tests.Tests_Components_Shared.TestSharedComponent>.AOT
         [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.BeforeSplashScreen)]
         public static void Load() {
             JobUtils.Initialize();
-            StaticSystemTypes<BulletSystem>.Validate();
-StaticSystemTypes<WeaponSystem>.Validate();
+            StaticSystemTypes<GOTransformSystem>.Validate();
+StaticSystemTypes<BulletSystem>.Validate();
+StaticSystemTypes<GOSyncTransformToEntitySystem>.Validate();
 StaticSystemTypes<CharacterSystem>.Validate();
 StaticSystemTypes<PlayerInputsSystem>.Validate();
-StaticSystemTypes<GOTransformSystem>.Validate();
+StaticSystemTypes<WeaponSystem>.Validate();
 StaticSystemTypes<ME.BECS.Tests.Tests_Systems_Graph.TestGraphSystem1_3>.Validate();
 StaticSystemTypes<ME.BECS.Tests.Tests_Systems_Graph.TestSystem1>.Validate();
 StaticSystemTypes<ME.BECS.Tests.Tests_Systems_Graph.TestGraphSystem2_2>.Validate();
@@ -223,12 +227,12 @@ StaticTypes<ME.BECS.TransformAspect.LocalPositionComponent>.ApplyGroup(10);
 StaticTypes<ME.BECS.TransformAspect.IsHierarchyDirtyComponent>.ApplyGroup(10);
 StaticTypes<ME.BECS.TransformAspect.LocalRotationComponent>.ApplyGroup(10);
 StaticTypes<CharacterState>.Validate(isTag: false);
+StaticTypes<CharacterData>.Validate(isTag: false);
 StaticTypes<WeaponData>.Validate(isTag: false);
-StaticTypes<Character.Data>.Validate(isTag: false);
+StaticTypes<WeaponState>.Validate(isTag: false);
 StaticTypes<PlayerInputs.Data>.Validate(isTag: false);
 StaticTypes<BulletData>.Validate(isTag: false);
 StaticTypes<GOTransform>.Validate(isTag: false);
-StaticTypes<WeaponState>.Validate(isTag: false);
 StaticTypes<ME.BECS.Views.ViewComponent>.Validate(isTag: false);
 StaticTypes<ME.BECS.Views.IsViewRequested>.Validate(isTag: true);
 StaticTypes<ME.BECS.Views.MeshRendererComponent>.Validate(isTag: false);

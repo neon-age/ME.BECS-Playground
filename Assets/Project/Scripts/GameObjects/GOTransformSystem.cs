@@ -12,6 +12,7 @@ using UnityEngine.Jobs;
 
 public struct GOTransform : IComponent
 {
+    /*
     [System.Flags]
     public enum SyncGO : byte
     {
@@ -22,12 +23,12 @@ public struct GOTransform : IComponent
 
         PosRot = Pos & Rot
     }
-
+*/
     public int index;
     public float3 localPos;
     public quaternion localRot;
     public float3 localScale;
-    public SyncGO syncGO;
+    //public SyncGO syncGO;
 }
 
 [BurstCompile]
@@ -106,7 +107,8 @@ public struct GOTransformSystem : IUpdate, IDestroy
             var entityPosChanged = !goRead.localPos.Equals(newLocalPos);
             var entityRotChanged = !goRead.localRot.Equals(newLocalRot);
             var entityScaleChanged = !goRead.localScale.Equals(newLocalScale);
-            
+
+            /* // bad and clumsy idea, instead done via GOEntity parenting and GOSyncTransformToEntitySystem
             if (goRead.syncGO != 0)
             {
                 // sync game-object transform to entity
@@ -142,28 +144,28 @@ public struct GOTransformSystem : IUpdate, IDestroy
                 
                 //goRead.syncGO = 0;
                 //ent.Set(goRead); // increment version
-            }
+            }*/
             //else 
             {
                 // sync transform to game-object entity
                 if (entityPosChanged && entityRotChanged)
                 {
                     transform.SetLocalPositionAndRotation(newLocalPos, newLocalRot);
-                    Debug.Log($"to GO PosRot change {newLocalPos} {newLocalRot}");
+                    //Debug.Log($"to GO PosRot change {newLocalPos} {newLocalRot}");
                     goRead.localPos = newLocalPos;
                     goRead.localRot = newLocalRot;
                     ent.Set(goRead); // increment version
                 }
                 else if (entityPosChanged)
                 {
-                    Debug.Log($"to GO Pos change {newLocalPos}");
+                    //Debug.Log($"to GO Pos change {newLocalPos}");
                     transform.localPosition = newLocalPos;
                     goRead.localPos = newLocalPos; 
                     ent.Set(goRead);
                 }
                 else if (entityRotChanged)
                 {
-                    Debug.Log($"to GO Rot change {newLocalRot}");
+                    //Debug.Log($"to GO Rot change {newLocalRot}");
                     transform.localRotation = newLocalRot;
                     goRead.localRot = newLocalRot;
                     ent.Set(goRead);
@@ -171,7 +173,7 @@ public struct GOTransformSystem : IUpdate, IDestroy
         
                 if (entityScaleChanged)
                 {
-                    Debug.Log($"to GO Scale change {newLocalScale}");
+                    //Debug.Log($"to GO Scale change {newLocalScale}");
                     transform.localScale = newLocalScale;
                     goRead.localScale = newLocalScale;
                     ent.Set(goRead);

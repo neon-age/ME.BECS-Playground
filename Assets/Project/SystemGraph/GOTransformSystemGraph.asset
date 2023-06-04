@@ -1,0 +1,168 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c47971b42c2144aeb6f0fb81f786410, type: 3}
+  m_Name: GOTransformSystemGraph
+  m_EditorClassIdentifier: 
+  serializedNodes: []
+  nodes:
+  - rid: 8047813841814552578
+  - rid: 8047813841814552579
+  - rid: 8047813887805358156
+  - rid: 8047813887805358158
+  - rid: 8047813887805358160
+  edges:
+  - GUID: 9a554e5c-c55e-49dd-987f-e03e176d805c
+    owner: {fileID: 11400000}
+    inputNodeGUID: dc719b56-a24d-42d3-a1d8-14e22b1845ad
+    outputNodeGUID: f22f369b-db01-419b-854a-00045292d131
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: e6e6d309-8610-402e-9c78-e5a55570e868
+    owner: {fileID: 11400000}
+    inputNodeGUID: EndNode
+    outputNodeGUID: dc719b56-a24d-42d3-a1d8-14e22b1845ad
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 8c065568-2d98-4b92-8459-026ee2ac0b9c
+    owner: {fileID: 11400000}
+    inputNodeGUID: 644a9a70-005b-43ef-904e-77fec1515a3d
+    outputNodeGUID: StartNode
+    inputFieldName: inputNodes
+    outputFieldName: output
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 3418cefa-7ecf-4e31-9390-a92225e619fb
+    owner: {fileID: 11400000}
+    inputNodeGUID: f22f369b-db01-419b-854a-00045292d131
+    outputNodeGUID: 644a9a70-005b-43ef-904e-77fec1515a3d
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  groups: []
+  stackNodes: []
+  pinnedElements: []
+  exposedParameters: []
+  serializedParameterList: []
+  stickyNotes: []
+  nodeInspectorReference: {fileID: 0}
+  position: {x: 174, y: -43, z: 0}
+  scale: {x: 0.7561437, y: 0.7561437, z: 1}
+  references:
+    version: 2
+    RefIds:
+    - rid: 8047813841814552578
+      type: {class: StartNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: StartNode
+        groupGUID: 
+        computeOrder: 0
+        position:
+          serializedVersion: 2
+          x: 55
+          y: 315
+          width: 100
+          height: 87
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+    - rid: 8047813841814552579
+      type: {class: ExitNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: EndNode
+        groupGUID: 
+        computeOrder: 4
+        position:
+          serializedVersion: 2
+          x: 1054.0002
+          y: 315
+          width: 100
+          height: 87
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+    - rid: 8047813887805358156
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: 644a9a70-005b-43ef-904e-77fec1515a3d
+        groupGUID: 
+        computeOrder: 1
+        position:
+          serializedVersion: 2
+          x: 155
+          y: 315
+          width: 300
+          height: 117
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 8047813887805358157
+    - rid: 8047813887805358157
+      type: {class: TransformWorldMatrixUpdateSystem, ns: ME.BECS.TransformAspect, asm: ME.BECS.Aspects.TransformAspect}
+    - rid: 8047813887805358158
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: dc719b56-a24d-42d3-a1d8-14e22b1845ad
+        groupGUID: 
+        computeOrder: 3
+        position:
+          serializedVersion: 2
+          x: 754
+          y: 315
+          width: 300
+          height: 117
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 8047813887805358159
+    - rid: 8047813887805358159
+      type: {class: GOSyncTransformToEntitySystem, ns: , asm: NewProject}
+    - rid: 8047813887805358160
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: f22f369b-db01-419b-854a-00045292d131
+        groupGUID: 
+        computeOrder: 2
+        position:
+          serializedVersion: 2
+          x: 454
+          y: 315
+          width: 300
+          height: 117
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 8047813887805358161
+    - rid: 8047813887805358161
+      type: {class: GOTransformSystem, ns: , asm: NewProject}

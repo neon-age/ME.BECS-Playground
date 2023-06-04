@@ -9,13 +9,13 @@ public struct CharacterState : IComponent
 {
     public Ent weapon;
 }
+public struct CharacterData : IComponent, IConfigComponent
+{
+    public float moveSpeed;
+}
 
 public class Character : MonoBehaviour
 {
-    public struct Data : IComponent, IConfigComponent
-    {
-        public float moveSpeed;
-    }
     public EntityConfig config;
     public GOEntity weapon;
 
