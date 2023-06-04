@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a636fa88b5054528be78fe9f569307ed, type: 3}
+  m_Name: ViewsRegistry
+  m_EditorClassIdentifier: 
+  prefabId: 0
+  items:
+  - prefab: {fileID: 7750937498739906906, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
+    prefabId: 2
+    references: 2

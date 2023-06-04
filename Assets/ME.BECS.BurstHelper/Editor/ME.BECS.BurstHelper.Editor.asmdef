@@ -1,0 +1,10 @@
+{
+                        "name": "ME.BECS.BurstHelper.Editor",
+                        "references": [
+                            "NewProject","ME.BECS.Tests","ME.BECS.Features","ME.BECS","ME.BECS.Aspects.TransformAspect","ME.BECS.Views","ME.BECS.Views.Editor","ME.BECS.Network","ME.BECS.Network.Editor","ME.BECS.Editor","ME.BECS.ObjectReference.Runtime","Unity.Mathematics","Unity.Collections","Unity.Burst","UnityEngine.TestRunner","UnityEditor.TestRunner","Unity.Profiling.Core","ME.BECS.Features.Editor"
+                            ],
+                        "includePlatforms": [
+                            "Editor"
+                        ],
+                        "allowUnsafeCode": true
+                    }
