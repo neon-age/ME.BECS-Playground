@@ -119,16 +119,18 @@ public struct GOTransformSystem : IUpdate, IDestroy
             return;
         ref var go = ref ent.Get<GOTransform>();
         entityCount--;
-        transformAccessArray.RemoveAtSwapBack(go.index);
+        //transformAccessArray.RemoveAtSwapBack(go.index);
+        transformAccessArray[go.index] = transformAccessArray[entityCount];
         entities[go.index] = entities[entityCount];
-        entities[entityCount] = default;
 
-        go.index = entityCount;
+        go = entities[entityCount].Get<GOTransform>();
+
+        entities[entityCount] = default;
     }
 
     public void OnUpdate(ref SystemContext context)
     {
-        var job = new ApplyTransformJob { entities = entities };
+        var job = new ApplyTransformJob { entities = entities, count = entityCount };
 
         var handle = job.Schedule(transformAccessArray);
         context.SetDependency(handle);
@@ -139,9 +141,12 @@ public struct GOTransformSystem : IUpdate, IDestroy
     {
         [ReadOnly]
         public NativeArray<Ent> entities;
+        public int count;
         
         public void Execute(int index, TransformAccess transform)
         {
+            if (index >= count)
+                return;
             var ent = entities[index];
 
             var trsAspect = ent.GetAspect<TransformAspect>();

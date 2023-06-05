@@ -13,6 +13,8 @@ public class GOEntity : MonoBehaviour
     [HideInInspector]
     public Ent parent;
 
+    public bool syncTransforms = true;
+
     [NonSerialized] public Transform trs;
     
     void Awake() // first phase, get entities
@@ -31,17 +33,21 @@ public class GOEntity : MonoBehaviour
 
     void Start() // second phase, register transforms
     {
-        GOTransformSystem.Register(ent, trs);
-
-        if (!parent.IsEmpty())
+        if (syncTransforms)
         {
-            ent.SetParent(parent);
+            GOTransformSystem.Register(ent, trs);
+
+            if (!parent.IsEmpty())
+            {
+                ent.SetParent(parent);
+            }
         }
     }
 
     void OnDestroy()
     {
-        GOTransformSystem.Unregister(ent);
         GOEntityLookup.RemoveEntity(trs);
+        if (syncTransforms)
+            GOTransformSystem.Unregister(ent);
     }
 }

@@ -21,6 +21,7 @@ MonoBehaviour:
   - rid: 8047813860301733934
   - rid: 8047813882432978977
   - rid: 8047813887805358162
+  - rid: 8047813907763429377
   edges:
   - GUID: 94b04100-3b05-407a-a8a9-c5fe92041d8f
     owner: {fileID: 11400000}
@@ -70,6 +71,22 @@ MonoBehaviour:
     outputFieldName: outputNodes
     inputPortIdentifier: 
     outputPortIdentifier: 
+  - GUID: d64eb10e-1983-45a9-a45f-e31aefc77d5d
+    owner: {fileID: 11400000}
+    inputNodeGUID: 77366b50-f5f7-4482-8595-7cc619d4455a
+    outputNodeGUID: StartNode
+    inputFieldName: inputNodes
+    outputFieldName: output
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 73c441f0-d8ab-4971-a45e-3c31c5b7ce4d
+    owner: {fileID: 11400000}
+    inputNodeGUID: 26a1829e-ec93-4fa2-a2a3-33329f6bbead
+    outputNodeGUID: 77366b50-f5f7-4482-8595-7cc619d4455a
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
   groups: []
   stackNodes: []
   pinnedElements: []
@@ -77,7 +94,7 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: 377, y: -9, z: 0}
+  position: {x: 418, y: -56, z: 0}
   scale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
@@ -106,7 +123,7 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: EndNode
         groupGUID: 
-        computeOrder: 6
+        computeOrder: 7
         position:
           serializedVersion: 2
           x: 1054.0002
@@ -212,7 +229,7 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: 26a1829e-ec93-4fa2-a2a3-33329f6bbead
         groupGUID: 
-        computeOrder: 5
+        computeOrder: 6
         position:
           serializedVersion: 2
           x: 754
@@ -225,3 +242,31 @@ MonoBehaviour:
         nodeLock: 0
         customRuntimeSystemRoot: {fileID: 0}
         graphValue: {fileID: 11400000, guid: 876c91da930a7744d95fd1999d4bb87d, type: 2}
+    - rid: 8047813907763429377
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: 77366b50-f5f7-4482-8595-7cc619d4455a
+        groupGUID: 
+        computeOrder: 5
+        position:
+          serializedVersion: 2
+          x: -89.86998
+          y: 456.26254
+          width: 300
+          height: 175
+        expanded: 1
+        enabled: 0
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 8047813907763429378
+    - rid: 8047813907763429378
+      type: {class: CubeTestSystem, ns: , asm: NewProject}
+      data:
+        cubeView:
+          viewSource:
+            providerId: 0
+            prefabId: 0
+        spawnCount: 100

@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a636fa88b5054528be78fe9f569307ed, type: 3}
   m_Name: ViewsRegistry
   m_EditorClassIdentifier: 
-  prefabId: 0
+  prefabId: 1
   items:
   - prefab: {fileID: 7750937498739906906, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
     prefabId: 2
     references: 2
+  - prefab: {fileID: 3490064106460849135, guid: 9012cae51c6c0794f9be436ef9860a0b, type: 3}
+    prefabId: 1
+    references: 1
