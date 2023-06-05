@@ -7,11 +7,19 @@ using UnityEngine;
 public static class GOEntityLookup
 {
     public static Dictionary<Transform, Ent> TransformToEnt = new Dictionary<Transform, Ent>();
+    public static Dictionary<Ent, Transform> EntToTransform = new Dictionary<Ent, Transform>();
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
     static void OnLoad()
     {
         TransformToEnt.Clear();
+        EntToTransform.Clear();
+    }
+
+    public static void LinkEntity(Ent ent, Transform trs)
+    {
+        TransformToEnt.Add(trs, ent);
+        EntToTransform.Add(ent, trs);
     }
     
     [MethodImpl(256)]
@@ -21,6 +29,7 @@ public static class GOEntityLookup
         {
             ent = Ent.New();
             TransformToEnt.Add(trs, ent);
+            EntToTransform.Add(ent, trs);
         }
         return ent;
     }
@@ -38,6 +47,7 @@ public static class GOEntityLookup
     [MethodImpl(256)]
     public static void RemoveEntity(Transform trs)
     {
+        EntToTransform.Remove(TransformToEnt[trs]);
         TransformToEnt.Remove(trs);
     }  
     [MethodImpl(256)]

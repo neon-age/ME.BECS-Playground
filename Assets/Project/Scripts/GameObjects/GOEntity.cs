@@ -47,6 +47,8 @@ public class GOEntity : MonoBehaviour
     void OnDestroy()
     {
         GOEntityLookup.RemoveEntity(trs);
+        if (!ent.IsAlive())
+            return;
         if (syncTransforms)
             GOTransformSystem.Unregister(ent);
     }

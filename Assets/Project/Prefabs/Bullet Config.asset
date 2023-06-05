@@ -16,6 +16,7 @@ MonoBehaviour:
   data:
     components:
     - rid: 8047813887016829201
+    - rid: 8047813910728802306
     isShared: 0
   sharedData:
     components: []
@@ -33,3 +34,7 @@ MonoBehaviour:
         rayMask:
           serializedVersion: 2
           m_Bits: 1
+    - rid: 8047813910728802306
+      type: {class: LifetimeData, ns: , asm: NewProject}
+      data:
+        value: 0.4
