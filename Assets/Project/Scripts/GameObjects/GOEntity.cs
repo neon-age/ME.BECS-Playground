@@ -25,6 +25,8 @@ public class GOEntity : MonoBehaviour
         {
             parent = trsParent.GetEntity();
         }
+
+        // TODO: Register transform doesn't work in Awake? No entities found by query
     }
 
     void Start() // second phase, register transforms

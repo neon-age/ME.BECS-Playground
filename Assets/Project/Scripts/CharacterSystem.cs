@@ -37,6 +37,8 @@ public struct CharacterSystem : IUpdate
             trs.localRotation = Quaternion.LookRotation(input.cursorPos - localPos, Vector3.up);
 
             state.weapon.Get<WeaponState>().shootInput = input.shoot;
+
+            input = default;
         }
     }
 }

@@ -15,7 +15,6 @@ MonoBehaviour:
   baseConfig: {fileID: 0}
   data:
     components:
-    - rid: 8047813841814552585
     - rid: 8047813888371589120
     isShared: 0
   sharedData:
@@ -27,13 +26,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 8047813841814552585
-      type: {class: LocalPositionComponent, ns: ME.BECS.TransformAspect, asm: ME.BECS.Aspects.TransformAspect}
-      data:
-        value:
-          x: 0
-          y: 0
-          z: 0
     - rid: 8047813888371589120
       type: {class: CharacterData, ns: , asm: NewProject}
       data:

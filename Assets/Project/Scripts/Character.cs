@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ME.BECS;
@@ -7,6 +8,7 @@ using UnityEngine;
 
 public struct CharacterState : IComponent
 {
+    [NonSerialized]
     public Ent weapon;
 }
 public struct CharacterData : IComponent, IConfigComponent

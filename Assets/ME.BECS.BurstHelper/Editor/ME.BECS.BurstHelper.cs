@@ -13,18 +13,18 @@ BurstCompileMethod.MakeDestroy<GOTransformSystem>(default);
 StaticSystemTypes<BulletSystem>.Validate();
 BurstCompileOnUpdateNoBurst<BulletSystem>.MakeMethod(null);
 BurstCompileMethod.MakeUpdate<BulletSystem>(default);
+StaticSystemTypes<WeaponSystem>.Validate();
+BurstCompileOnUpdateNoBurst<WeaponSystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<WeaponSystem>(default);
+StaticSystemTypes<PlayerInputsSystem>.Validate();
+BurstCompileOnUpdateNoBurst<PlayerInputsSystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<PlayerInputsSystem>(default);
 StaticSystemTypes<GOSyncTransformToEntitySystem>.Validate();
 BurstCompileOnUpdateNoBurst<GOSyncTransformToEntitySystem>.MakeMethod(null);
 BurstCompileMethod.MakeUpdate<GOSyncTransformToEntitySystem>(default);
 StaticSystemTypes<CharacterSystem>.Validate();
 BurstCompileOnUpdateNoBurst<CharacterSystem>.MakeMethod(null);
 BurstCompileMethod.MakeUpdate<CharacterSystem>(default);
-StaticSystemTypes<PlayerInputsSystem>.Validate();
-BurstCompileOnUpdateNoBurst<PlayerInputsSystem>.MakeMethod(null);
-BurstCompileMethod.MakeUpdate<PlayerInputsSystem>(default);
-StaticSystemTypes<WeaponSystem>.Validate();
-BurstCompileOnUpdateNoBurst<WeaponSystem>.MakeMethod(null);
-BurstCompileMethod.MakeUpdate<WeaponSystem>(default);
 StaticSystemTypes<ME.BECS.Tests.Tests_Systems_Graph.TestSystem2_2>.Validate();
 BurstCompileOnUpdateNoBurst<ME.BECS.Tests.Tests_Systems_Graph.TestSystem2_2>.MakeMethod(null);
 BurstCompileMethod.MakeUpdate<ME.BECS.Tests.Tests_Systems_Graph.TestSystem2_2>(default);
@@ -145,9 +145,9 @@ BurstCompileOnUpdateNoBurst<ME.BECS.TransformAspect.TransformWorldMatrixUpdateSy
 BurstCompileMethod.MakeUpdate<ME.BECS.TransformAspect.TransformWorldMatrixUpdateSystem>(default);
 StaticTypes<CharacterState>.AOT();
 StaticTypes<CharacterData>.AOT();
-StaticTypes<WeaponData>.AOT();
 StaticTypes<WeaponState>.AOT();
 StaticTypes<PlayerInputs.Data>.AOT();
+StaticTypes<WeaponData>.AOT();
 StaticTypes<BulletData>.AOT();
 StaticTypes<GOTransform>.AOT();
 StaticTypes<ME.BECS.Views.ViewComponent>.AOT();
@@ -197,10 +197,10 @@ StaticTypesShared<ME.BECS.Tests.Tests_Components_Shared.TestSharedComponent>.AOT
             JobUtils.Initialize();
             StaticSystemTypes<GOTransformSystem>.Validate();
 StaticSystemTypes<BulletSystem>.Validate();
+StaticSystemTypes<WeaponSystem>.Validate();
+StaticSystemTypes<PlayerInputsSystem>.Validate();
 StaticSystemTypes<GOSyncTransformToEntitySystem>.Validate();
 StaticSystemTypes<CharacterSystem>.Validate();
-StaticSystemTypes<PlayerInputsSystem>.Validate();
-StaticSystemTypes<WeaponSystem>.Validate();
 StaticSystemTypes<ME.BECS.Tests.Tests_Systems_Graph.TestSystem2_2>.Validate();
 StaticSystemTypes<ME.BECS.Tests.Tests_Systems_Graph.TestSystem3>.Validate();
 StaticSystemTypes<ME.BECS.Tests.Tests_Systems_Graph.TestGraphSystem1_1>.Validate();
@@ -229,9 +229,9 @@ StaticTypes<ME.BECS.TransformAspect.LocalRotationComponent>.ApplyGroup(typeof(ME
 StaticTypes<ME.BECS.TransformAspect.ParentComponent>.ApplyGroup(typeof(ME.BECS.TransformAspect.TransformComponentGroup));
 StaticTypes<CharacterState>.Validate(isTag: false);
 StaticTypes<CharacterData>.Validate(isTag: false);
-StaticTypes<WeaponData>.Validate(isTag: false);
 StaticTypes<WeaponState>.Validate(isTag: false);
 StaticTypes<PlayerInputs.Data>.Validate(isTag: false);
+StaticTypes<WeaponData>.Validate(isTag: false);
 StaticTypes<BulletData>.Validate(isTag: false);
 StaticTypes<GOTransform>.Validate(isTag: false);
 StaticTypes<ME.BECS.Views.ViewComponent>.Validate(isTag: false);
@@ -293,13 +293,13 @@ AspectTypeInfo<ME.BECS.Tests.TestAspect>.with.Get(0) = StaticTypes<ME.BECS.Tests
         [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.BeforeSplashScreen)]
         public static void Load() {
             WorldStaticCallbacks.RegisterCallback<ME.BECS.Views.ViewsModuleData>(ViewsLoad);
-WorldStaticCallbacks.RegisterCallback<UnsafeNetworkModule.MethodsStorage>(NetworkLoad);
+WorldStaticCallbacks.RegisterCallback<ME.BECS.Network.UnsafeNetworkModule.MethodsStorage>(NetworkLoad);
 WorldStaticCallbacks.RegisterCallback<World>(AspectsConstruct);
         }
         public static void ViewsLoad(ref ME.BECS.Views.ViewsModuleData viewsModule) {
 
 }
-public static void NetworkLoad(ref UnsafeNetworkModule.MethodsStorage methods) {
+public static void NetworkLoad(ref ME.BECS.Network.UnsafeNetworkModule.MethodsStorage methods) {
 
 }
 public static void AspectsConstruct(ref World world) {
