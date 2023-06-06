@@ -1,0 +1,20 @@
+{
+    "name": "ME.BECS.SceneEntityView",
+    "rootNamespace": "",
+    "references": [
+        "ME.BECS",
+        "ME.BECS.Aspects.TransformAspect",
+        "ME.BECS.Features",
+        "ME.BECS.Views",
+        "Unity.Mathematics"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
