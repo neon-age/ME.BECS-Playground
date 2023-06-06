@@ -12,8 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436db3977bb840d7a5d066ad527d46fd, type: 3}
   m_Name: EntityConfigsRegistry
   m_EditorClassIdentifier: 
-  sourceId: 1
+  sourceId: 7
   items:
+  - source: {fileID: 11400000, guid: 776e0e36479fb18438ef30fbfaa8a2ad, type: 2}
+    sourceId: 3
+    references: 1
+  - source: {fileID: 11400000, guid: 9b8805ea8634e1f40afcec5c70df633c, type: 2}
+    sourceId: 2
+    references: 1
+  - source: {fileID: 11400000, guid: 2891132c445a1d245a5763a5cc13868e, type: 2}
+    sourceId: 5
+    references: 1
   - source: {fileID: 11400000, guid: a4fa0db2d56a17a4585462c9572a5b50, type: 2}
-    sourceId: 1
+    sourceId: 6
+    references: 1
+  - source: {fileID: 11400000, guid: d8c97c170179d754aac99172f41596e6, type: 2}
+    sourceId: 7
     references: 1

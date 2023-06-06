@@ -1,45 +1,53 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ME.BECS;
 using Unity.Mathematics;
 using UnityEngine;
 
+public struct CharacterInputsData : IComponent, IConfigComponent
+{
+    [NonSerialized] public float2 move;
+    [NonSerialized] public float3 cursorPos;
+    [NonSerialized] public bool shoot;
+}
+
 public class PlayerInputs : MonoBehaviour
 {
-    public struct Data : IComponent
-    {
-        public float2 move;
-        public float3 cursorPos;
-        public bool shoot;
-    }
     public GOEntity target;
-
-    public static PlayerInputs Instance;
-    internal Data input;
+    Vector3 cursorPoint;
 
     void Start()
     {
-        Instance = this;
+        PlayerInputsSystem.PlayerEnt = target.ent;
     }
-    void Update()
+    void Update() // can't directly set entity data inside mono Update loop, transfered to PlayerInputsSystem IUpdate instead
     {
-        input.move = new float2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        PlayerInputsSystem.PlayerEnt = target.ent;
+        ref var input = ref PlayerInputsSystem.PlayerInput;
+
+        input.move = Vector2.ClampMagnitude(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")), 1);
         input.shoot = Input.GetMouseButton(0);
 
         var cursorRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        var upPlane = new Plane(Vector3.up, Vector3.zero);
 
+        var upPlane = new Plane(Vector3.up, Vector3.zero);
         upPlane.Raycast(cursorRay, out var cursorEnter);
-        input.cursorPos = cursorRay.GetPoint(cursorEnter);
+        cursorPoint = cursorRay.GetPoint(cursorEnter);
+        //if (Physics.Raycast(cursorRay, out var cursorHit))
+        //    cursorPoint = cursorHit.point;
+
+        input.cursorPos = cursorPoint;
     }
 }
 public struct PlayerInputsSystem : IUpdate
 {
+    public static Ent PlayerEnt;
+    public static CharacterInputsData PlayerInput;
+
     public void OnUpdate(ref SystemContext context)
     {
-        var ent = PlayerInputs.Instance.target.ent;
-        ref var input = ref ent.Get<PlayerInputs.Data>();
-
-        input = PlayerInputs.Instance.input;
+        ref var input = ref PlayerEnt.Get<CharacterInputsData>();
+        input = PlayerInput;
     }
 }

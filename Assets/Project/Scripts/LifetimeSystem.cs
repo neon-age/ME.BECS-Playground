@@ -24,17 +24,18 @@ public struct LifetimeSystem : IUpdate
             {
                 if (ent.Has<GOTransformSystem.TransformCache>())
                 {
+                    // Destroy game-object
+                    GOTransformSystem.Unregister(ent);
                     if (GOEntityLookup.EntToTransform.TryGetValue(ent, out var trs))
                     {
-                        GOEntityLookup.RemoveEntity(trs);
                         Object.Destroy(trs.gameObject);
+                        // entity is removed in GOEntity.OnDestroy
                     }
-                    else
-                        Debug.Log(ent);
-                    GOTransformSystem.Unregister(ent);
-                    
                 }
-                ent.Destroy();
+                else
+                {
+                    ent.Destroy();
+                }
             }
         }
     }

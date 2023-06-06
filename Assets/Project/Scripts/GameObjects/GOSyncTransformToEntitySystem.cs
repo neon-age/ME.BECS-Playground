@@ -19,8 +19,6 @@ public struct GOSyncTransformToEntitySystem : IUpdate
                 trs.GetLocalPositionAndRotation(out var localPos, out var localRot);
                 var localScale = trs.localScale;
 
-               
-
                 var trsAspect = ent.GetAspect<TransformAspect>();
                 trsAspect.localPosition = localPos;
                 trsAspect.localRotation = localRot;

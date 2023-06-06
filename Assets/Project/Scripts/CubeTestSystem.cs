@@ -41,12 +41,17 @@ public struct CubeTestSystem : IAwake, IUpdate
         var pos = UnityEngine.Random.insideUnitSphere * spawnRadius;
         var go = Object.Instantiate(prefab, pos, Quaternion.identity);
 
-        GOTransformSystem.Register(ent, go.transform);
-        GOEntityLookup.LinkEntity(ent, go.transform);
-
+        //GOTransformSystem.Register(ent, go.transform);
+        //GOEntityLookup.LinkEntity(ent, go.transform);
         var lifetime = UnityEngine.Random.value * maxLifetime;
-        ent.Set(new Cube { speed = UnityEngine.Random.value * maxSpeed, startLifetime = lifetime });
-        ent.Set(new LifetimeData { value = lifetime });
+        var speed = UnityEngine.Random.value * maxSpeed;
+
+        ent.RegisterAction(() => 
+        {
+            ent.Set(new Cube { speed = speed, startLifetime = lifetime });
+            ent.Set(new LifetimeData { value = lifetime });
+        });
+        
     }
 
     public void OnUpdate(ref SystemContext context)

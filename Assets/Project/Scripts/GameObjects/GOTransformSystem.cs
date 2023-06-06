@@ -48,6 +48,8 @@ public unsafe struct GOTransformSystem : IUpdate, IDestroy
         }
         public Type type;
         public Ent ent;
+        public Ent parent;
+        public Config config;
         public TransformCache trs;
     }
 
@@ -88,7 +90,7 @@ public unsafe struct GOTransformSystem : IUpdate, IDestroy
         //UnsafeUtility.Free(buffer, Allocator.Persistent);
     }
 
-    void ValidateInitialization() // can't use IAwake as it is called from game-objects before system initialization
+    void ValidateInitialization()
     {
         if (!isInitialized)
         {
@@ -103,14 +105,17 @@ public unsafe struct GOTransformSystem : IUpdate, IDestroy
         }
     }
 
-    public static void Register(Ent ent, Transform transform)
+    public static void Register(Ent ent, Ent parent, Transform transform, Config config = default)
     {
-        if (!Context.world.isCreated)
+        var world = ent.World;
+        if (!world.isCreated)
             return;
-        ref var system = ref Context.world.GetSystem<GOTransformSystem>();
-        system._Register(ent, transform);
+        ref var system = ref world.GetSystem<GOTransformSystem>();
+
+        system._Register(ent, parent, transform, config);
     }
-    void _Register(Ent ent, Transform transform)
+
+    void _Register(Ent ent, Ent parent, Transform transform, Config config = default)
     {
         ValidateInitialization();
         if (registeredTransforms.ContainsKey(ent))
@@ -135,18 +140,28 @@ public unsafe struct GOTransformSystem : IUpdate, IDestroy
             ent = ent,
             index = length,
         });
-        buffer->commands.Add(new Command { type = Command.Type.Register, ent = ent, trs = trs });
+        //buffer->commands.Add(new Command 
+        //{ 
+        //    type = Command.Type.Register, 
+        //    ent = ent, 
+        //    parent = parent,
+        //    config = config,
+        //    trs = trs,
+        //});
 
         entityCount++;
     }
 
     public static void Unregister(Ent ent)
     {
-        if (!Context.world.isCreated)
+        var world = ent.World;
+        if (!world.isCreated)
             return;
-        ref var system = ref Context.world.GetSystem<GOTransformSystem>();
+        ref var system = ref world.GetSystem<GOTransformSystem>();
+
         system._Unregister(ent);
     }
+
     void _Unregister(Ent ent)
     {
         if (!registeredTransforms.IsCreated || 
@@ -167,15 +182,15 @@ public unsafe struct GOTransformSystem : IUpdate, IDestroy
 
     public void OnUpdate(ref SystemContext context)
     {
-        var handle = new ExecuteRegisterCommandsJob { buffer = buffer }
-        .Schedule();
-
-        handle = new ApplyTransformJob { buffer = buffer }
-        .Schedule(transformAccessArray, handle);
+        //var handle = new ExecuteRegisterCommandsJob { buffer = buffer }
+        //.Schedule();
+        var handle = new ApplyTransformJob { buffer = buffer }
+        .Schedule(transformAccessArray);
 
         context.SetDependency(handle);
     }
-    [BurstCompile]
+    /* // done with ManagedCommandsSystem instead
+    //[BurstCompile]
     struct ExecuteRegisterCommandsJob : IJob
     {
         [NativeDisableUnsafePtrRestriction]
@@ -183,7 +198,7 @@ public unsafe struct GOTransformSystem : IUpdate, IDestroy
 
         public void Execute()
         {
-            for (int i = buffer->commands.Length - 1; i >= 0; i--)
+            for (int i = 0; i < buffer->commands.Length; i++)
             {
                 var c = buffer->commands[i];
                 if (c.type == Command.Type.Register)
@@ -194,15 +209,20 @@ public unsafe struct GOTransformSystem : IUpdate, IDestroy
                     trs.localScale = c.trs.localScale;
 
                     c.ent.Get<TransformCache>() = c.trs;
+
+                    //if (c.config.sourceId != 0)
+                    //{
+                    //    c.config.Apply(c.ent);
+                    //}
                 }
                 if (c.type == Command.Type.Unregister)
                 {
                     c.ent.Remove<TransformCache>();
                 }
-                buffer->commands.RemoveAtSwapBack(i);
             }
+            buffer->commands.Clear();
         }
-    }
+    }*/
 
     [BurstCompile]
     struct ApplyTransformJob : IJobParallelForTransform

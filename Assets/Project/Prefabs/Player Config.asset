@@ -16,6 +16,7 @@ MonoBehaviour:
   data:
     components:
     - rid: 8047813888371589120
+    - rid: 8047813930851762179
     isShared: 0
   sharedData:
     components: []
@@ -29,4 +30,10 @@ MonoBehaviour:
     - rid: 8047813888371589120
       type: {class: CharacterData, ns: , asm: NewProject}
       data:
-        moveSpeed: 10
+        moveSpeed: 50
+        moveDirChangeVel: 2
+        maxVelocity: 25
+        lookSpring: 300
+        lookDamper: 30
+    - rid: 8047813930851762179
+      type: {class: CharacterInputsData, ns: , asm: NewProject}

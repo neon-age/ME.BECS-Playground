@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85c23d484dd87431ab96b0d060a518f1, type: 3}
-  m_Name: Bullet Config
+  m_Name: Bullet Enemy Config
   m_EditorClassIdentifier: 
   baseConfig: {fileID: 0}
   data:
@@ -30,11 +30,12 @@ MonoBehaviour:
     - rid: 8047813887016829201
       type: {class: BulletData, ns: , asm: NewProject}
       data:
-        speed: 1
+        speed: 0.3
+        hitForce: 10
         rayMask:
           serializedVersion: 2
-          m_Bits: 1
+          m_Bits: 9
     - rid: 8047813910728802306
       type: {class: LifetimeData, ns: , asm: NewProject}
       data:
-        value: 0.4
+        value: 1

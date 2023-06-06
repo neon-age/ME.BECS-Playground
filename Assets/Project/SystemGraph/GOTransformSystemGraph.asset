@@ -20,22 +20,6 @@ MonoBehaviour:
   - rid: 8047813887805358158
   - rid: 8047813887805358160
   edges:
-  - GUID: 9a554e5c-c55e-49dd-987f-e03e176d805c
-    owner: {fileID: 11400000}
-    inputNodeGUID: dc719b56-a24d-42d3-a1d8-14e22b1845ad
-    outputNodeGUID: f22f369b-db01-419b-854a-00045292d131
-    inputFieldName: inputNodes
-    outputFieldName: outputNodes
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: e6e6d309-8610-402e-9c78-e5a55570e868
-    owner: {fileID: 11400000}
-    inputNodeGUID: EndNode
-    outputNodeGUID: dc719b56-a24d-42d3-a1d8-14e22b1845ad
-    inputFieldName: inputNodes
-    outputFieldName: outputNodes
-    inputPortIdentifier: 
-    outputPortIdentifier: 
   - GUID: 8c065568-2d98-4b92-8459-026ee2ac0b9c
     owner: {fileID: 11400000}
     inputNodeGUID: 644a9a70-005b-43ef-904e-77fec1515a3d
@@ -44,10 +28,26 @@ MonoBehaviour:
     outputFieldName: output
     inputPortIdentifier: 
     outputPortIdentifier: 
-  - GUID: 3418cefa-7ecf-4e31-9390-a92225e619fb
+  - GUID: 78e1db65-3bd6-4f2b-8f6d-b31b3b9c20ee
     owner: {fileID: 11400000}
     inputNodeGUID: f22f369b-db01-419b-854a-00045292d131
     outputNodeGUID: 644a9a70-005b-43ef-904e-77fec1515a3d
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 1cd1dac3-7132-49ad-9d16-2f2350484ef4
+    owner: {fileID: 11400000}
+    inputNodeGUID: dc719b56-a24d-42d3-a1d8-14e22b1845ad
+    outputNodeGUID: f22f369b-db01-419b-854a-00045292d131
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 0993e35e-e4d7-4ffc-a686-5290b57d9f95
+    owner: {fileID: 11400000}
+    inputNodeGUID: EndNode
+    outputNodeGUID: dc719b56-a24d-42d3-a1d8-14e22b1845ad
     inputFieldName: inputNodes
     outputFieldName: outputNodes
     inputPortIdentifier: 
@@ -59,7 +59,7 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: -138, y: 26, z: 0}
+  position: {x: 27, y: 15, z: 0}
   scale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
@@ -110,7 +110,7 @@ MonoBehaviour:
         position:
           serializedVersion: 2
           x: 155
-          y: 315
+          y: 315.00003
           width: 300
           height: 117
         expanded: 1
@@ -131,8 +131,8 @@ MonoBehaviour:
         computeOrder: 3
         position:
           serializedVersion: 2
-          x: 754
-          y: 315
+          x: 755
+          y: 315.00003
           width: 300
           height: 117
         expanded: 1
@@ -153,8 +153,8 @@ MonoBehaviour:
         computeOrder: 2
         position:
           serializedVersion: 2
-          x: 454
-          y: 315
+          x: 455
+          y: 315.00003
           width: 300
           height: 117
         expanded: 1
@@ -163,6 +163,6 @@ MonoBehaviour:
         nodeLock: 0
         customRuntimeSystemRoot: {fileID: 0}
         system:
-          rid: 8047813887805358161
-    - rid: 8047813887805358161
+          rid: 8047813933326139392
+    - rid: 8047813933326139392
       type: {class: GOTransformSystem, ns: , asm: NewProject}

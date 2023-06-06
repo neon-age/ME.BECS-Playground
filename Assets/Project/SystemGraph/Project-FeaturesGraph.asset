@@ -16,55 +16,26 @@ MonoBehaviour:
   nodes:
   - rid: 8047813841814552578
   - rid: 8047813841814552579
-  - rid: 8047813841814552583
-  - rid: 8047813848550604849
-  - rid: 8047813860301733934
-  - rid: 8047813882432978977
   - rid: 8047813887805358162
   - rid: 8047813907763429377
-  - rid: 8047813910728802304
+  - rid: 8047813930851762180
+  - rid: 8047813934408794113
+  - rid: 8047813934408794115
+  - rid: 8047813934408794117
+  - rid: 8047813934408794119
+  - rid: 8047813934408794121
+  - rid: 8047813934408794123
+  - rid: 8047813934408794125
   edges:
-  - GUID: 94b04100-3b05-407a-a8a9-c5fe92041d8f
+  - GUID: 9ce0d709-8b36-4508-afb0-954190ab8bfa
     owner: {fileID: 11400000}
-    inputNodeGUID: 26a1829e-ec93-4fa2-a2a3-33329f6bbead
-    outputNodeGUID: efca6a78-cc7f-44ff-9a52-fbddf213ce91
+    inputNodeGUID: 4b40e559-2b6d-4de0-ae04-0f1c785fedff
+    outputNodeGUID: StartNode
     inputFieldName: inputNodes
-    outputFieldName: outputNodes
+    outputFieldName: output
     inputPortIdentifier: 
     outputPortIdentifier: 
-  - GUID: 105f6c34-b3fe-4e48-9ed4-f2f9faf9758b
-    owner: {fileID: 11400000}
-    inputNodeGUID: EndNode
-    outputNodeGUID: 26a1829e-ec93-4fa2-a2a3-33329f6bbead
-    inputFieldName: inputNodes
-    outputFieldName: outputNodes
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: de0a2712-4c3e-4340-8194-0118204f8520
-    owner: {fileID: 11400000}
-    inputNodeGUID: d3d9e8cb-8316-4e99-b565-35e23eaf1735
-    outputNodeGUID: e44395bd-190b-409f-84a0-732c0b5d47e7
-    inputFieldName: inputNodes
-    outputFieldName: outputNodes
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: 7a7789d1-c2e5-477c-a19c-38c490905770
-    owner: {fileID: 11400000}
-    inputNodeGUID: 2d2aa54b-34a4-49dd-b2b9-c0dd292a288c
-    outputNodeGUID: d3d9e8cb-8316-4e99-b565-35e23eaf1735
-    inputFieldName: inputNodes
-    outputFieldName: outputNodes
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: 4689b72f-3990-46f6-ae80-7a22e2be70fe
-    owner: {fileID: 11400000}
-    inputNodeGUID: efca6a78-cc7f-44ff-9a52-fbddf213ce91
-    outputNodeGUID: 2d2aa54b-34a4-49dd-b2b9-c0dd292a288c
-    inputFieldName: inputNodes
-    outputFieldName: outputNodes
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: d64eb10e-1983-45a9-a45f-e31aefc77d5d
+  - GUID: acaa655c-d69b-4cb0-82d7-2ed64e7208f8
     owner: {fileID: 11400000}
     inputNodeGUID: 77366b50-f5f7-4482-8595-7cc619d4455a
     outputNodeGUID: StartNode
@@ -72,26 +43,82 @@ MonoBehaviour:
     outputFieldName: output
     inputPortIdentifier: 
     outputPortIdentifier: 
-  - GUID: 73c441f0-d8ab-4971-a45e-3c31c5b7ce4d
+  - GUID: fb99e491-3d8c-4111-b397-333d1314a960
     owner: {fileID: 11400000}
-    inputNodeGUID: 26a1829e-ec93-4fa2-a2a3-33329f6bbead
+    inputNodeGUID: EndNode
     outputNodeGUID: 77366b50-f5f7-4482-8595-7cc619d4455a
     inputFieldName: inputNodes
     outputFieldName: outputNodes
     inputPortIdentifier: 
     outputPortIdentifier: 
-  - GUID: df065b4e-54f3-40f6-bdb3-29396e961971
+  - GUID: 4a466548-5d55-424b-b02e-9960eb0ebc2c
     owner: {fileID: 11400000}
-    inputNodeGUID: 9a8a2436-ecc5-40de-bd7e-ec3a178b018b
-    outputNodeGUID: StartNode
+    inputNodeGUID: ab939616-d13a-4344-8025-65afaf947ef3
+    outputNodeGUID: df5e4da8-8543-4386-8d7e-1fd893784ef5
     inputFieldName: inputNodes
-    outputFieldName: output
+    outputFieldName: outputNodes
     inputPortIdentifier: 
     outputPortIdentifier: 
-  - GUID: 7886dc39-10f1-44d6-8d27-16978ffaac0c
+  - GUID: 4abda3ec-9f52-426b-bfd6-8fde3873ff04
     owner: {fileID: 11400000}
-    inputNodeGUID: e44395bd-190b-409f-84a0-732c0b5d47e7
-    outputNodeGUID: 9a8a2436-ecc5-40de-bd7e-ec3a178b018b
+    inputNodeGUID: 97452e87-45ee-4c90-9f01-4fe6f5f7315d
+    outputNodeGUID: 370c87c3-4aad-4a3e-a668-f4be4304840d
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 8ef5a398-eae7-4224-b31f-21a87dc410d1
+    owner: {fileID: 11400000}
+    inputNodeGUID: 370c87c3-4aad-4a3e-a668-f4be4304840d
+    outputNodeGUID: e7ba55df-5b64-47c0-8a67-bed814c31c46
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: b3f9c511-6058-430d-9c9c-96f6472cef58
+    owner: {fileID: 11400000}
+    inputNodeGUID: 26a1829e-ec93-4fa2-a2a3-33329f6bbead
+    outputNodeGUID: 97452e87-45ee-4c90-9f01-4fe6f5f7315d
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: e73d8d5b-c3c8-47b1-95c9-728bb1585bca
+    owner: {fileID: 11400000}
+    inputNodeGUID: EndNode
+    outputNodeGUID: 26a1829e-ec93-4fa2-a2a3-33329f6bbead
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 241aae46-8e07-408a-aed1-6d94142b1ce7
+    owner: {fileID: 11400000}
+    inputNodeGUID: e7ba55df-5b64-47c0-8a67-bed814c31c46
+    outputNodeGUID: ab939616-d13a-4344-8025-65afaf947ef3
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: d0b86f24-4e91-4914-911b-3e691c0549f6
+    owner: {fileID: 11400000}
+    inputNodeGUID: 990071b4-22c1-440c-83ab-20df5078e5f8
+    outputNodeGUID: df5ac86e-cde5-4e12-9780-b46991e4b151
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: a8784a39-7d6d-4b8e-8fde-38e7d1fa6027
+    owner: {fileID: 11400000}
+    inputNodeGUID: df5ac86e-cde5-4e12-9780-b46991e4b151
+    outputNodeGUID: 4b40e559-2b6d-4de0-ae04-0f1c785fedff
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 48229a8f-fbcb-4e4a-9cbb-dcea95aa9e58
+    owner: {fileID: 11400000}
+    inputNodeGUID: df5e4da8-8543-4386-8d7e-1fd893784ef5
+    outputNodeGUID: 990071b4-22c1-440c-83ab-20df5078e5f8
     inputFieldName: inputNodes
     outputFieldName: outputNodes
     inputPortIdentifier: 
@@ -103,8 +130,8 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: 456, y: -331, z: 0}
-  scale: {x: 1, y: 1, z: 1}
+  position: {x: 185, y: 247, z: 0}
+  scale: {x: 0.65751624, y: 0.65751624, z: 1}
   references:
     version: 2
     RefIds:
@@ -117,8 +144,8 @@ MonoBehaviour:
         computeOrder: 0
         position:
           serializedVersion: 2
-          x: -845.9999
-          y: 315
+          x: -144.4825
+          y: 552.32263
           width: 100
           height: 87
         expanded: 1
@@ -132,11 +159,11 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: EndNode
         groupGUID: 
-        computeOrder: 8
+        computeOrder: 11
         position:
           serializedVersion: 2
-          x: 1054.0002
-          y: 315
+          x: 1380.7598
+          y: 574.2394
           width: 100
           height: 87
         expanded: 1
@@ -144,105 +171,17 @@ MonoBehaviour:
         debug: 0
         nodeLock: 0
         customRuntimeSystemRoot: {fileID: 0}
-    - rid: 8047813841814552583
-      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
-      data:
-        nodeCustomName: 
-        GUID: efca6a78-cc7f-44ff-9a52-fbddf213ce91
-        groupGUID: 
-        computeOrder: 5
-        position:
-          serializedVersion: 2
-          x: 454
-          y: 315.00003
-          width: 300
-          height: 76
-        expanded: 0
-        enabled: 1
-        debug: 0
-        nodeLock: 0
-        customRuntimeSystemRoot: {fileID: 0}
-        system:
-          rid: 8047813841814552587
-    - rid: 8047813841814552587
-      type: {class: CharacterSystem, ns: , asm: NewProject}
-    - rid: 8047813848550604849
-      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
-      data:
-        nodeCustomName: 
-        GUID: 2d2aa54b-34a4-49dd-b2b9-c0dd292a288c
-        groupGUID: 
-        computeOrder: 4
-        position:
-          serializedVersion: 2
-          x: 153.99994
-          y: 315.00003
-          width: 300
-          height: 76
-        expanded: 0
-        enabled: 1
-        debug: 0
-        nodeLock: 0
-        customRuntimeSystemRoot: {fileID: 0}
-        system:
-          rid: 8047813848550604850
-    - rid: 8047813848550604850
-      type: {class: PlayerInputsSystem, ns: , asm: NewProject}
-    - rid: 8047813860301733934
-      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
-      data:
-        nodeCustomName: 
-        GUID: d3d9e8cb-8316-4e99-b565-35e23eaf1735
-        groupGUID: 
-        computeOrder: 3
-        position:
-          serializedVersion: 2
-          x: -146.00006
-          y: 315.00003
-          width: 300
-          height: 76
-        expanded: 0
-        enabled: 1
-        debug: 0
-        nodeLock: 0
-        customRuntimeSystemRoot: {fileID: 0}
-        system:
-          rid: 8047813860301733935
-    - rid: 8047813860301733935
-      type: {class: BulletSystem, ns: , asm: NewProject}
-    - rid: 8047813882432978977
-      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
-      data:
-        nodeCustomName: 
-        GUID: e44395bd-190b-409f-84a0-732c0b5d47e7
-        groupGUID: 
-        computeOrder: 2
-        position:
-          serializedVersion: 2
-          x: -446.00012
-          y: 315.00003
-          width: 300
-          height: 76
-        expanded: 0
-        enabled: 1
-        debug: 0
-        nodeLock: 0
-        customRuntimeSystemRoot: {fileID: 0}
-        system:
-          rid: 8047813882432978978
-    - rid: 8047813882432978978
-      type: {class: WeaponSystem, ns: , asm: NewProject}
     - rid: 8047813887805358162
       type: {class: GraphNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
       data:
         nodeCustomName: 
         GUID: 26a1829e-ec93-4fa2-a2a3-33329f6bbead
         groupGUID: 
-        computeOrder: 7
+        computeOrder: 10
         position:
           serializedVersion: 2
-          x: 754
-          y: 315.00003
+          x: 738.52264
+          y: 315
           width: 300
           height: 137
         expanded: 1
@@ -257,15 +196,15 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: 77366b50-f5f7-4482-8595-7cc619d4455a
         groupGUID: 
-        computeOrder: 6
+        computeOrder: 1
         position:
           serializedVersion: 2
-          x: -188.6899
-          y: 577.67
+          x: 543.00006
+          y: 574
           width: 300
           height: 76
         expanded: 1
-        enabled: 1
+        enabled: 0
         debug: 0
         nodeLock: 0
         customRuntimeSystemRoot: {fileID: 0}
@@ -283,25 +222,179 @@ MonoBehaviour:
         spawnRate: 0
         maxSpeed: 3
         maxLifetime: 5
-    - rid: 8047813910728802304
+    - rid: 8047813930851762180
       type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
       data:
         nodeCustomName: 
-        GUID: 9a8a2436-ecc5-40de-bd7e-ec3a178b018b
+        GUID: 4b40e559-2b6d-4de0-ae04-0f1c785fedff
         groupGUID: 
-        computeOrder: 1
+        computeOrder: 2
         position:
           serializedVersion: 2
-          x: -746
-          y: 315
+          x: -22.000004
+          y: 292
           width: 300
           height: 117
-        expanded: 0
+        expanded: 1
         enabled: 1
         debug: 0
         nodeLock: 0
         customRuntimeSystemRoot: {fileID: 0}
         system:
-          rid: 8047813910728802305
-    - rid: 8047813910728802305
+          rid: 8047813930851762181
+    - rid: 8047813930851762181
+      type: {class: ManagedCommandsSystem, ns: , asm: NewProject}
+    - rid: 8047813934408794113
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: df5ac86e-cde5-4e12-9780-b46991e4b151
+        groupGUID: 
+        computeOrder: 3
+        position:
+          serializedVersion: 2
+          x: 366
+          y: -288.99997
+          width: 300
+          height: 117
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 8047813934408794114
+    - rid: 8047813934408794114
       type: {class: LifetimeSystem, ns: , asm: NewProject}
+    - rid: 8047813934408794115
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: 990071b4-22c1-440c-83ab-20df5078e5f8
+        groupGUID: 
+        computeOrder: 4
+        position:
+          serializedVersion: 2
+          x: 366
+          y: -171.99994
+          width: 300
+          height: 117
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 8047813934408794116
+    - rid: 8047813934408794116
+      type: {class: KillZoneSystem, ns: , asm: NewProject}
+    - rid: 8047813934408794117
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: df5e4da8-8543-4386-8d7e-1fd893784ef5
+        groupGUID: 
+        computeOrder: 5
+        position:
+          serializedVersion: 2
+          x: 366.2311
+          y: -54.999985
+          width: 300
+          height: 117
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 8047813934408794118
+    - rid: 8047813934408794118
+      type: {class: WeaponSystem, ns: , asm: NewProject}
+    - rid: 8047813934408794119
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: ab939616-d13a-4344-8025-65afaf947ef3
+        groupGUID: 
+        computeOrder: 6
+        position:
+          serializedVersion: 2
+          x: 366.2311
+          y: 62.000008
+          width: 300
+          height: 117
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 8047813934408794120
+    - rid: 8047813934408794120
+      type: {class: BulletSystem, ns: , asm: NewProject}
+    - rid: 8047813934408794121
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: e7ba55df-5b64-47c0-8a67-bed814c31c46
+        groupGUID: 
+        computeOrder: 7
+        position:
+          serializedVersion: 2
+          x: 366.2311
+          y: 179.00003
+          width: 300
+          height: 117
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 8047813934408794122
+    - rid: 8047813934408794122
+      type: {class: PlayerInputsSystem, ns: , asm: NewProject}
+    - rid: 8047813934408794123
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: 370c87c3-4aad-4a3e-a668-f4be4304840d
+        groupGUID: 
+        computeOrder: 8
+        position:
+          serializedVersion: 2
+          x: 366.2311
+          y: 292.00003
+          width: 300
+          height: 117
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 8047813934408794124
+    - rid: 8047813934408794124
+      type: {class: CharacterSystem, ns: , asm: NewProject}
+    - rid: 8047813934408794125
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: 97452e87-45ee-4c90-9f01-4fe6f5f7315d
+        groupGUID: 
+        computeOrder: 9
+        position:
+          serializedVersion: 2
+          x: 366.2311
+          y: 409
+          width: 300
+          height: 117
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 8047813934408794126
+    - rid: 8047813934408794126
+      type: {class: AISystem, ns: , asm: NewProject}

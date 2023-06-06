@@ -4,18 +4,20 @@ using ME.BECS;
 using ME.BECS.TransformAspect;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour, IBeginTickInit
 {
     public WeaponData weaponData;
     public GOEntity firePoint;
 
+    public void OnBeginTickInit(Ent ent, object userData)
+    {
+        weaponData.firePoint = firePoint.ent;
+        ent.Set(weaponData);
+        ref var state = ref ent.Get<WeaponState>();
+    }
+
     void Start()
     {
-        var ent = this.GetEntity();
-
-        weaponData.firePoint = firePoint.ent;
-
-        ent.Set(weaponData);
-        ent.Get<WeaponState>();
+        this.RegisterInitOnBeginTick();
     }
 }

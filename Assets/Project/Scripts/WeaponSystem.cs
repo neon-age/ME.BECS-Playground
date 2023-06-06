@@ -42,11 +42,13 @@ public struct WeaponSystem : IUpdate
 
                 var bulletEnt = Ent.New();
                 data.bulletConfig.Apply(bulletEnt);
-                var bulletTrs = bulletEnt.GetAspect<TransformAspect>();
-
-                bulletEnt.InstantiateView(data.bulletView);
+                
+                var bulletTrs = bulletEnt.GetAspect<TransformAspect>(); 
                 bulletTrs.localPosition = firePointTrs.GetWorldMatrixPosition();
                 bulletTrs.localRotation = firePointTrs.GetWorldMatrixRotation();
+
+                bulletEnt.InstantiateView(data.bulletView);
+               
             }
         }
     }
