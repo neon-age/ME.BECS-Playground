@@ -37,9 +37,6 @@ public struct CharacterSystem : IUpdate
             if (velMoveDot != 0)
             {
                 var dot = 0f;
-                // Apply more force on sudden dir change
-                //moveDir *= velDotMove < 0 ? data.moveDirChangeVel : 1;
-
                 if (velMoveDot > 0)
                 {
                     // Reduce velocity as it gets close to max velocity

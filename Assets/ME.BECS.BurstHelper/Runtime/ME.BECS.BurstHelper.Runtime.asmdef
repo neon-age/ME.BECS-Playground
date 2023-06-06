@@ -1,7 +1,7 @@
 {
                         "name": "ME.BECS.BurstHelper.Runtime",
                         "references": [
-                            "NewProject","ME.BECS.Features","ME.BECS","ME.BECS.Aspects.TransformAspect","ME.BECS.Views","ME.BECS.UI","ME.BECS.Network","ME.BECS.ObjectReference.Runtime","Unity.Mathematics","Unity.Collections","Unity.Burst","Unity.Profiling.Core"
+                            "NewProject","ME.BECS.Features","ME.BECS","ME.BECS.Aspects.TransformAspect","ME.BECS.Views","ME.BECS.UI","ME.BECS.Network","ME.BECS.ObjectReference.Runtime","Unity.Mathematics","Unity.Collections","Unity.Burst","Unity.Profiling.Core","PhotonUnityNetworking","PhotonRealtime"
                             ],
                         "allowUnsafeCode": true
                     }

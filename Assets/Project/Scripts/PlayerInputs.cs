@@ -47,7 +47,10 @@ public struct PlayerInputsSystem : IUpdate
 
     public void OnUpdate(ref SystemContext context)
     {
-        ref var input = ref PlayerEnt.Get<CharacterInputsData>();
-        input = PlayerInput;
+        if (PlayerEnt.IsAlive())
+        {
+            ref var input = ref PlayerEnt.Get<CharacterInputsData>();
+            input = PlayerInput;
+        }
     }
 }

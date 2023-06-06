@@ -26,6 +26,7 @@ MonoBehaviour:
   - rid: 8047813934408794121
   - rid: 8047813934408794123
   - rid: 8047813934408794125
+  - rid: 8047813940419756035
   edges:
   - GUID: 9ce0d709-8b36-4508-afb0-954190ab8bfa
     owner: {fileID: 11400000}
@@ -75,42 +76,10 @@ MonoBehaviour:
     outputFieldName: outputNodes
     inputPortIdentifier: 
     outputPortIdentifier: 
-  - GUID: b3f9c511-6058-430d-9c9c-96f6472cef58
-    owner: {fileID: 11400000}
-    inputNodeGUID: 26a1829e-ec93-4fa2-a2a3-33329f6bbead
-    outputNodeGUID: 97452e87-45ee-4c90-9f01-4fe6f5f7315d
-    inputFieldName: inputNodes
-    outputFieldName: outputNodes
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: e73d8d5b-c3c8-47b1-95c9-728bb1585bca
-    owner: {fileID: 11400000}
-    inputNodeGUID: EndNode
-    outputNodeGUID: 26a1829e-ec93-4fa2-a2a3-33329f6bbead
-    inputFieldName: inputNodes
-    outputFieldName: outputNodes
-    inputPortIdentifier: 
-    outputPortIdentifier: 
   - GUID: 241aae46-8e07-408a-aed1-6d94142b1ce7
     owner: {fileID: 11400000}
     inputNodeGUID: e7ba55df-5b64-47c0-8a67-bed814c31c46
     outputNodeGUID: ab939616-d13a-4344-8025-65afaf947ef3
-    inputFieldName: inputNodes
-    outputFieldName: outputNodes
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: d0b86f24-4e91-4914-911b-3e691c0549f6
-    owner: {fileID: 11400000}
-    inputNodeGUID: 990071b4-22c1-440c-83ab-20df5078e5f8
-    outputNodeGUID: df5ac86e-cde5-4e12-9780-b46991e4b151
-    inputFieldName: inputNodes
-    outputFieldName: outputNodes
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: a8784a39-7d6d-4b8e-8fde-38e7d1fa6027
-    owner: {fileID: 11400000}
-    inputNodeGUID: df5ac86e-cde5-4e12-9780-b46991e4b151
-    outputNodeGUID: 4b40e559-2b6d-4de0-ae04-0f1c785fedff
     inputFieldName: inputNodes
     outputFieldName: outputNodes
     inputPortIdentifier: 
@@ -123,6 +92,38 @@ MonoBehaviour:
     outputFieldName: outputNodes
     inputPortIdentifier: 
     outputPortIdentifier: 
+  - GUID: 5ae7ee74-c6c0-46c1-aecf-dc3b413dc320
+    owner: {fileID: 11400000}
+    inputNodeGUID: EndNode
+    outputNodeGUID: df5ac86e-cde5-4e12-9780-b46991e4b151
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 6587e7c6-9f67-4ffb-bfa7-576cce6bc9ab
+    owner: {fileID: 11400000}
+    inputNodeGUID: df5ac86e-cde5-4e12-9780-b46991e4b151
+    outputNodeGUID: 26a1829e-ec93-4fa2-a2a3-33329f6bbead
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 06abd8f1-a752-4455-ad92-236a3a749540
+    owner: {fileID: 11400000}
+    inputNodeGUID: 9dde1d14-1be8-4fce-a8f6-e2a6a45563c3
+    outputNodeGUID: 4b40e559-2b6d-4de0-ae04-0f1c785fedff
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 6e8b63e0-64bf-4585-bc9a-e889ad188bf2
+    owner: {fileID: 11400000}
+    inputNodeGUID: 26a1829e-ec93-4fa2-a2a3-33329f6bbead
+    outputNodeGUID: 9dde1d14-1be8-4fce-a8f6-e2a6a45563c3
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
   groups: []
   stackNodes: []
   pinnedElements: []
@@ -130,8 +131,8 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: 185, y: 247, z: 0}
-  scale: {x: 0.65751624, y: 0.65751624, z: 1}
+  position: {x: 216, y: 173, z: 0}
+  scale: {x: 0.57175326, y: 0.57175326, z: 1}
   references:
     version: 2
     RefIds:
@@ -159,7 +160,7 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: EndNode
         groupGUID: 
-        computeOrder: 11
+        computeOrder: 6
         position:
           serializedVersion: 2
           x: 1380.7598
@@ -177,11 +178,11 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: 26a1829e-ec93-4fa2-a2a3-33329f6bbead
         groupGUID: 
-        computeOrder: 10
+        computeOrder: 4
         position:
           serializedVersion: 2
-          x: 738.52264
-          y: 315
+          x: 592.99994
+          y: 292
           width: 300
           height: 137
         expanded: 1
@@ -250,11 +251,11 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: df5ac86e-cde5-4e12-9780-b46991e4b151
         groupGUID: 
-        computeOrder: 3
+        computeOrder: 5
         position:
           serializedVersion: 2
-          x: 366
-          y: -288.99997
+          x: 1060.4502
+          y: 315
           width: 300
           height: 117
         expanded: 1
@@ -272,11 +273,11 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: 990071b4-22c1-440c-83ab-20df5078e5f8
         groupGUID: 
-        computeOrder: 4
+        computeOrder: 7
         position:
           serializedVersion: 2
-          x: 366
-          y: -171.99994
+          x: 358.06503
+          y: -519.7117
           width: 300
           height: 117
         expanded: 1
@@ -294,11 +295,11 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: df5e4da8-8543-4386-8d7e-1fd893784ef5
         groupGUID: 
-        computeOrder: 5
+        computeOrder: 8
         position:
           serializedVersion: 2
-          x: 366.2311
-          y: -54.999985
+          x: 358.06503
+          y: -402.7117
           width: 300
           height: 117
         expanded: 1
@@ -316,11 +317,11 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: ab939616-d13a-4344-8025-65afaf947ef3
         groupGUID: 
-        computeOrder: 6
+        computeOrder: 9
         position:
           serializedVersion: 2
-          x: 366.2311
-          y: 62.000008
+          x: 358.06503
+          y: -285.71167
           width: 300
           height: 117
         expanded: 1
@@ -338,11 +339,11 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: e7ba55df-5b64-47c0-8a67-bed814c31c46
         groupGUID: 
-        computeOrder: 7
+        computeOrder: 10
         position:
           serializedVersion: 2
-          x: 366.2311
-          y: 179.00003
+          x: 358.06503
+          y: -168.71167
           width: 300
           height: 117
         expanded: 1
@@ -360,11 +361,11 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: 370c87c3-4aad-4a3e-a668-f4be4304840d
         groupGUID: 
-        computeOrder: 8
+        computeOrder: 11
         position:
           serializedVersion: 2
-          x: 366.2311
-          y: 292.00003
+          x: 358.06503
+          y: -55.7117
           width: 300
           height: 117
         expanded: 1
@@ -382,11 +383,11 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: 97452e87-45ee-4c90-9f01-4fe6f5f7315d
         groupGUID: 
-        computeOrder: 9
+        computeOrder: 12
         position:
           serializedVersion: 2
-          x: 366.2311
-          y: 409
+          x: 358
+          y: 60.99999
           width: 300
           height: 117
         expanded: 1
@@ -398,3 +399,22 @@ MonoBehaviour:
           rid: 8047813934408794126
     - rid: 8047813934408794126
       type: {class: AISystem, ns: , asm: NewProject}
+    - rid: 8047813940419756035
+      type: {class: GraphNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: 9dde1d14-1be8-4fce-a8f6-e2a6a45563c3
+        groupGUID: 
+        computeOrder: 3
+        position:
+          serializedVersion: 2
+          x: 293.20877
+          y: 292
+          width: 300
+          height: 137
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        graphValue: {fileID: 11400000, guid: 39655031de6faf64ab731fa872fcfc7f, type: 2}

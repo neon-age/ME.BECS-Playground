@@ -15,8 +15,11 @@ public class CameraController : MonoBehaviour
     void FixedUpdate()
     {
         var playerEnt = PlayerInputsSystem.PlayerEnt;
-        var playerPos = playerEnt.Read<LocalPositionComponent>();
+        if (playerEnt.IsAlive())
+        {
+            var playerPos = playerEnt.Read<LocalPositionComponent>();
 
-        transform.position = playerPos.value + worldOffset;
+            transform.position = playerPos.value + worldOffset;
+        }
     }
 }

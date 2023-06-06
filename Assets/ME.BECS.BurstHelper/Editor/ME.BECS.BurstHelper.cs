@@ -202,6 +202,8 @@ StaticTypesShared<ME.BECS.Tests.Tests_Components_Shared.TestCustom1SharedCompone
 StaticTypesShared<ME.BECS.Tests.Tests_Components_Shared.TestCustom2SharedComponent>.AOT();
 StaticTypesShared<ME.BECS.Tests.Tests_EntityConfig.TestConfigShared1Component>.AOT();
 StaticTypesShared<ME.BECS.Tests.Tests_Components_Shared.TestSharedComponent>.AOT();
+StaticTypesStatic<ME.BECS.Tests.Tests_EntityConfig.TestConfig2StaticComponent>.AOT();
+StaticTypesStatic<ME.BECS.Tests.Tests_EntityConfig.TestConfig1StaticComponent>.AOT();
         }
     }
         
@@ -297,6 +299,8 @@ StaticTypes<ME.BECS.Tests.Tests_Components_Shared.TestCustom1SharedComponent>.Va
 StaticTypes<ME.BECS.Tests.Tests_Components_Shared.TestCustom2SharedComponent>.ValidateShared(isTag: false);
 StaticTypes<ME.BECS.Tests.Tests_EntityConfig.TestConfigShared1Component>.ValidateShared(isTag: false);
 StaticTypes<ME.BECS.Tests.Tests_Components_Shared.TestSharedComponent>.ValidateShared(isTag: false);
+StaticTypes<ME.BECS.Tests.Tests_EntityConfig.TestConfig2StaticComponent>.ValidateStatic(isTag: false);
+StaticTypes<ME.BECS.Tests.Tests_EntityConfig.TestConfig1StaticComponent>.ValidateStatic(isTag: false);
 AspectTypeInfo<ME.BECS.Tests.Tests_Aspects.TestAspect>.Validate();
 AspectTypeInfo<ME.BECS.Tests.Aspect1>.Validate();
 AspectTypeInfo<ME.BECS.Tests.Aspect1>.with.Resize(2);

@@ -30,7 +30,7 @@ MonoBehaviour:
     - rid: 8047813888371589120
       type: {class: CharacterData, ns: , asm: NewProject}
       data:
-        moveSpeed: 50
+        moveSpeed: 100
         moveDirChangeVel: 2
         maxVelocity: 25
         lookSpring: 300

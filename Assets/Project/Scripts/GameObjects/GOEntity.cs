@@ -72,6 +72,10 @@ public class GOEntity : MonoBehaviour, IBeginTickInit
         {
             GOTransformSystem.Unregister(ent);
             ent.Destroy();
+            //ent.RegisterAction(() =>
+            //{
+            //    ent.Destroy();
+            //});
         }
     }
 }
