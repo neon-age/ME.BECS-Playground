@@ -15,30 +15,32 @@ MonoBehaviour:
   baseConfig: {fileID: 0}
   data:
     components:
-    - rid: 8047813888371589120
-    - rid: 8047813929606578291
-    - rid: 8047813930851762177
+    - rid: 8047813999986737154
     isShared: 0
   sharedData:
     components: []
     isShared: 1
   staticData:
-    components: []
+    components:
+    - rid: 8047813997762445312
     isShared: 0
   references:
     version: 2
     RefIds:
-    - rid: 8047813888371589120
-      type: {class: CharacterData, ns: , asm: NewProject}
+    - rid: 8047813997762445312
+      type: {class: Character/Static, ns: , asm: NewProject}
       data:
-        moveSpeed: 35
-        moveDirChangeVel: 1
-        maxVelocity: 25
-        lookSpring: 200
-        lookDamper: 20
-    - rid: 8047813929606578291
-      type: {class: AIData, ns: , asm: NewProject}
+        moveSpeed: 100
+        groundDrag: 0.25
+        lookSpring: 300
+        lookDamper: 30
+        groundMask:
+          serializedVersion: 2
+          m_Bits: 9
+        groundRadius: 0.4999
+        groundDist: 1.01
+        groundUpforce: 19
+    - rid: 8047813999986737154
+      type: {class: AI/Data, ns: , asm: NewProject}
       data:
-        minDistToShoot: 10
-    - rid: 8047813930851762177
-      type: {class: CharacterInputsData, ns: , asm: NewProject}
+        minDistToShoot: 15

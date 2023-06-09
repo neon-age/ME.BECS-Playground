@@ -4,15 +4,33 @@ using System.Collections.Generic;
 using ME.BECS;
 using ME.BECS.TransformAspect;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEngine.UIElements;
+using UnityEditor.UIElements;
+#endif
 
-public interface IBeginTickInit 
+public struct GOEntityChild 
 {
-    void OnBeginTickInit(Ent ent, object userData);
+    public Ent rootParent;
 }
 
 [DefaultExecutionOrder(-10000)]
 public class GOEntity : MonoBehaviour, IBeginTickInit
 {
+    #if UNITY_EDITOR
+    [CustomEditor(typeof(GOEntity)), CanEditMultipleObjects]
+    class GOEntityEditor : Editor
+    {
+        public override VisualElement CreateInspectorGUI()
+        {
+            var root = new VisualElement();
+            root.Add(new PropertyField(serializedObject.FindProperty("config")));
+            return root;
+        }
+    }
+    #endif
+
     [HideInInspector] // UI Elements shit is catastrophically slow :( enable at your own risk
     public Ent ent;
     [HideInInspector]
@@ -34,8 +52,9 @@ public class GOEntity : MonoBehaviour, IBeginTickInit
         }
     }
 
-    public void OnBeginTickInit(Ent ent, object userData)
+    public void OnBeginTickInit(IBeginTickInit.Context ctx)
     {
+        var ent = ctx.ent;
         GOTransformSystem.Register(ent, parent, trs, config);
 
         ref var trsCache = ref ent.Get<GOTransformSystem.TransformCache>();
@@ -58,11 +77,6 @@ public class GOEntity : MonoBehaviour, IBeginTickInit
     void Start() // second phase, register transforms
     {
         this.RegisterInitOnBeginTick(ent);
-
-        //if (!parent.IsEmpty())
-        //{
-        //    ent.SetParent(parent);
-        //}
     }
 
     void OnDestroy()
@@ -72,10 +86,6 @@ public class GOEntity : MonoBehaviour, IBeginTickInit
         {
             GOTransformSystem.Unregister(ent);
             ent.Destroy();
-            //ent.RegisterAction(() =>
-            //{
-            //    ent.Destroy();
-            //});
         }
     }
 }

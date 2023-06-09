@@ -4,9 +4,19 @@ using System.Collections.Generic;
 using ME.BECS;
 using UnityEngine;
 
+public interface IBeginTickInit
+{
+    public struct Context
+    {
+        public Ent ent;
+        public object userData;
+    }
+    void OnBeginTickInit(Context ctx);
+}
+
 public static class ManagedCommandsExt 
 {
-    public static void RegisterAction(this Ent ent, Action action)
+    public static void RegisterActionOnBeginTick(this Ent ent, Action<IBeginTickInit.Context> action, object userData = null)
     {
         var world = ent.World;
         ref var system = ref world.GetSystem<ManagedCommandsSystem>();
@@ -14,9 +24,16 @@ public static class ManagedCommandsExt
         var buffer = ManagedCommandsSystem.ManagedBuffers[system.id];
         buffer.commands.Add(new ManagedCommandsSystem.Buffer.Command 
         {
-            action = action 
+            action = action,
+            userData = userData,
         });
     }
+    public static void RegisterActionOnBeginTick(this IBeginTickInit initObj, Action<IBeginTickInit.Context> action, object userData = null)
+    {
+        var ent = (initObj as Component).GetEntity();
+        RegisterActionOnBeginTick(ent, action, userData);
+    }
+
     public static void RegisterInitOnBeginTick(this IBeginTickInit initObj, Ent ent, object userData = null)
     {
         var world = ent.World;
@@ -26,7 +43,8 @@ public static class ManagedCommandsExt
         buffer.commands.Add(new ManagedCommandsSystem.Buffer.Command 
         {
             ent = ent,
-            initObj = initObj 
+            initObj = initObj,
+            userData = userData,
         });
     }
     public static void RegisterInitOnBeginTick(this IBeginTickInit initObj, object userData = null)
@@ -42,29 +60,29 @@ public struct ManagedCommandsSystem : IAwake, IUpdate
     {
         public struct Command 
         {
-            public Action action;
+            public Action<IBeginTickInit.Context> action;
             public IBeginTickInit initObj;
             public Ent ent;
             public object userData;
         }
         public System.Collections.Generic.List<Command> commands = new(100);
     }
-    internal static Dictionary<int, Buffer> ManagedBuffers = new();
+    internal static System.Collections.Generic.List<Buffer> ManagedBuffers = new();
 
-    internal static int GlobalId;
+    internal static int IdCounter;
     internal int id;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
     static void OnLoad()
     {
-        GlobalId = 0;
+        IdCounter = -1;
         ManagedBuffers.Clear();
     }
 
     public void OnAwake(ref SystemContext context)
     {
-        id = ++GlobalId;
-        ManagedBuffers.Add(id, new Buffer());
+        id = ++IdCounter;
+        ManagedBuffers.Add(new Buffer());
     }
 
     public void OnUpdate(ref SystemContext context)
@@ -77,18 +95,19 @@ public struct ManagedCommandsSystem : IAwake, IUpdate
             var command = buffer.commands[i]; 
             try
             {
+                var ctx = new IBeginTickInit.Context { ent = command.ent, userData = command.userData };
                 if (command.action != null)
                 {
-                    command.action.Invoke();
+                    command.action.Invoke(ctx);
                 }
                 if (command.initObj != null)
                 {
-                    command.initObj.OnBeginTickInit(command.ent, command.userData);
+                    command.initObj.OnBeginTickInit(ctx);
                 }
             }
             catch (System.Exception ex)
             {
-                throw ex;
+                Debug.LogException(ex);
             }
         }
         buffer.commands.Clear();

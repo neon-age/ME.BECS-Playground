@@ -15,11 +15,11 @@ MonoBehaviour:
   baseConfig: {fileID: 0}
   data:
     components:
-    - rid: 8047813887016829201
     - rid: 8047813910728802306
     isShared: 0
   sharedData:
-    components: []
+    components:
+    - rid: 8047813999986737153
     isShared: 1
   staticData:
     components: []
@@ -27,15 +27,15 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 8047813887016829201
-      type: {class: BulletData, ns: , asm: NewProject}
-      data:
-        speed: 0.3
-        hitForce: 10
-        rayMask:
-          serializedVersion: 2
-          m_Bits: 9
     - rid: 8047813910728802306
       type: {class: LifetimeData, ns: , asm: NewProject}
       data:
         value: 1
+    - rid: 8047813999986737153
+      type: {class: Bullet/Shared, ns: , asm: NewProject}
+      data:
+        speed: 0.89
+        hitForce: 15
+        rayMask:
+          serializedVersion: 2
+          m_Bits: 9

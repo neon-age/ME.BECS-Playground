@@ -14,26 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseConfig: {fileID: 0}
   data:
-    components:
-    - rid: 8047813888371589120
-    - rid: 8047813930851762179
+    components: []
     isShared: 0
   sharedData:
     components: []
     isShared: 1
   staticData:
-    components: []
+    components:
+    - rid: 8047813984109985793
     isShared: 0
   references:
     version: 2
     RefIds:
-    - rid: 8047813888371589120
-      type: {class: CharacterData, ns: , asm: NewProject}
+    - rid: 8047813984109985793
+      type: {class: Character/Static, ns: , asm: NewProject}
       data:
-        moveSpeed: 100
-        moveDirChangeVel: 2
-        maxVelocity: 25
-        lookSpring: 300
+        moveSpeed: 200
+        groundDrag: 0.5
+        lookSpring: 400
         lookDamper: 30
-    - rid: 8047813930851762179
-      type: {class: CharacterInputsData, ns: , asm: NewProject}
+        groundMask:
+          serializedVersion: 2
+          m_Bits: 9
+        groundRadius: 0.4999
+        groundDist: 1.01
+        groundUpforce: 19

@@ -5,16 +5,10 @@ using ME.BECS;
 using Unity.Mathematics;
 using UnityEngine;
 
-public struct CharacterInputsData : IComponent, IConfigComponent
-{
-    [NonSerialized] public float2 move;
-    [NonSerialized] public float3 cursorPos;
-    [NonSerialized] public bool shoot;
-}
-
 public class PlayerInputs : MonoBehaviour
 {
     public GOEntity target;
+    public Transform cursorView;
     Vector3 cursorPoint;
 
     void Start()
@@ -38,18 +32,19 @@ public class PlayerInputs : MonoBehaviour
         //    cursorPoint = cursorHit.point;
 
         input.cursorPos = cursorPoint;
+        cursorView.localPosition = cursorPoint;
     }
 }
 public struct PlayerInputsSystem : IUpdate
 {
     public static Ent PlayerEnt;
-    public static CharacterInputsData PlayerInput;
+    public static Character.Inputs PlayerInput;
 
     public void OnUpdate(ref SystemContext context)
     {
         if (PlayerEnt.IsAlive())
         {
-            ref var input = ref PlayerEnt.Get<CharacterInputsData>();
+            ref var input = ref PlayerEnt.Get<Character.Inputs>();
             input = PlayerInput;
         }
     }

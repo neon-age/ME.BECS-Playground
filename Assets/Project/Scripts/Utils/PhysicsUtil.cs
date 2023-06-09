@@ -4,6 +4,17 @@ using UnityEngine;
 
 public static class PhysicsUtil
 {
+    public static void ApplyDrag(ref Vector3 velocity, float linearDrag, float quadraticDrag, float deltaTime)
+    {
+        var velMag = velocity.magnitude;
+
+        if (quadraticDrag != 0)
+            velocity -= (velMag * velMag) * quadraticDrag * deltaTime * velocity.normalized;
+
+        if (linearDrag != 0)
+            velocity *= (1 - deltaTime * linearDrag);
+    }
+
     // https://gamedev.stackexchange.com/questions/182850/rotate-rigidbody-to-face-away-from-camera-with-addtorque
     public static Vector3 GetTorqueTowardsRotation(Vector3 angularVelocity, Quaternion fromRot, Quaternion targetRot, float spring, float damper, float deltaTime)
     {

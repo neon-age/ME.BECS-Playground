@@ -12,6 +12,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Jobs;
 
+[Tooltip("Apply changed entities transforms to game-objects.")]
 [BurstCompile]
 public unsafe struct GOTransformSystem : IUpdate, IDestroy
 {
@@ -248,6 +249,10 @@ public unsafe struct GOTransformSystem : IUpdate, IDestroy
             var entityPosChanged = !trsCache.localPos.Equals(newLocalPos);
             var entityRotChanged = !trsCache.localRot.Equals(newLocalRot);
             var entityScaleChanged = !trsCache.localScale.Equals(newLocalScale);
+
+            entityPosChanged = true;
+            entityRotChanged = true;
+            entityScaleChanged = true;
 
             // sync transform from entity to game-object
             if (entityPosChanged && entityRotChanged)

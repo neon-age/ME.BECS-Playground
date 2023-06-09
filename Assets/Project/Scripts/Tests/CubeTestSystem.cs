@@ -46,7 +46,7 @@ public struct CubeTestSystem : IAwake, IUpdate
         var lifetime = UnityEngine.Random.value * maxLifetime;
         var speed = UnityEngine.Random.value * maxSpeed;
 
-        ent.RegisterAction(() => 
+        ent.RegisterActionOnBeginTick((ctx) => 
         {
             ent.Set(new Cube { speed = speed, startLifetime = lifetime });
             ent.Set(new LifetimeData { value = lifetime });

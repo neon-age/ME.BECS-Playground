@@ -8,6 +8,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 721516383665021947, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 721516383665021947, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721516383665021947, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721516383665021947, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 721516383665021947, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721516383665021947, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 800739377632055539, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 11400000, guid: 2891132c445a1d245a5763a5cc13868e, type: 2}
     - target: {fileID: 2464366041970230307, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
       propertyPath: m_Name
       value: Bullet Enemy

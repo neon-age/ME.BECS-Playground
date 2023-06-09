@@ -5,7 +5,7 @@ using ME.BECS.Addons;
 using ME.BECS.TransformAspect;
 using UnityEngine;
 
-public struct KillZoneData : IComponent, IConfigComponent
+public struct KillZoneData : IConfigComponent
 {
     public LayerMask layerMask;
 }
@@ -31,7 +31,14 @@ public struct KillZoneSystem : IUpdate
             {
                 var overlapEnt = overlaps[i].GetEntity();
                 if (overlapEnt.IsAlive())
-                    overlapEnt.Get<LifetimeData>().value = 0;
+                {
+                    var entToDestroy = overlapEnt;
+                    if (overlapEnt.Has<HitboxLinkData>())
+                    {
+                        entToDestroy = overlapEnt.Get<HitboxLinkData>().linkedEntity;
+                    }
+                    entToDestroy.Get<LifetimeData>().value = 0;
+                }
             }
         }
         //Physics.OverlapBoxNonAlloc

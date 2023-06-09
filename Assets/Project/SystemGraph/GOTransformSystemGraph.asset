@@ -17,37 +17,37 @@ MonoBehaviour:
   - rid: 8047813841814552578
   - rid: 8047813841814552579
   - rid: 8047813887805358156
-  - rid: 8047813887805358158
   - rid: 8047813887805358160
+  - rid: 8047813943337943049
   edges:
-  - GUID: 8c065568-2d98-4b92-8459-026ee2ac0b9c
+  - GUID: 67adf313-c9c8-4fc2-9241-6c07b6a890df
     owner: {fileID: 11400000}
-    inputNodeGUID: 644a9a70-005b-43ef-904e-77fec1515a3d
+    inputNodeGUID: f22f369b-db01-419b-854a-00045292d131
     outputNodeGUID: StartNode
     inputFieldName: inputNodes
     outputFieldName: output
     inputPortIdentifier: 
     outputPortIdentifier: 
-  - GUID: 78e1db65-3bd6-4f2b-8f6d-b31b3b9c20ee
+  - GUID: 271efa39-4236-4bc9-9e90-e4ef5f5996ca
     owner: {fileID: 11400000}
-    inputNodeGUID: f22f369b-db01-419b-854a-00045292d131
-    outputNodeGUID: 644a9a70-005b-43ef-904e-77fec1515a3d
-    inputFieldName: inputNodes
-    outputFieldName: outputNodes
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: 1cd1dac3-7132-49ad-9d16-2f2350484ef4
-    owner: {fileID: 11400000}
-    inputNodeGUID: dc719b56-a24d-42d3-a1d8-14e22b1845ad
+    inputNodeGUID: 644a9a70-005b-43ef-904e-77fec1515a3d
     outputNodeGUID: f22f369b-db01-419b-854a-00045292d131
     inputFieldName: inputNodes
     outputFieldName: outputNodes
     inputPortIdentifier: 
     outputPortIdentifier: 
-  - GUID: 0993e35e-e4d7-4ffc-a686-5290b57d9f95
+  - GUID: 1bb43370-be76-4d40-b13d-9a89ef085edf
+    owner: {fileID: 11400000}
+    inputNodeGUID: 1a5a23f2-6513-4343-a6d8-8f51aee9c605
+    outputNodeGUID: 644a9a70-005b-43ef-904e-77fec1515a3d
+    inputFieldName: inputNodes
+    outputFieldName: outputNodes
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: b44b9007-03af-41ea-979e-615f1b2630b6
     owner: {fileID: 11400000}
     inputNodeGUID: EndNode
-    outputNodeGUID: dc719b56-a24d-42d3-a1d8-14e22b1845ad
+    outputNodeGUID: 1a5a23f2-6513-4343-a6d8-8f51aee9c605
     inputFieldName: inputNodes
     outputFieldName: outputNodes
     inputPortIdentifier: 
@@ -59,7 +59,7 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: 118, y: 18, z: 0}
+  position: {x: 153, y: 76, z: 0}
   scale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
@@ -106,11 +106,11 @@ MonoBehaviour:
         nodeCustomName: 
         GUID: 644a9a70-005b-43ef-904e-77fec1515a3d
         groupGUID: 
-        computeOrder: 1
+        computeOrder: 2
         position:
           serializedVersion: 2
-          x: 155
-          y: 315.00003
+          x: 455
+          y: 315
           width: 300
           height: 117
         expanded: 1
@@ -122,39 +122,17 @@ MonoBehaviour:
           rid: 8047813887805358157
     - rid: 8047813887805358157
       type: {class: TransformWorldMatrixUpdateSystem, ns: ME.BECS.TransformAspect, asm: ME.BECS.Aspects.TransformAspect}
-    - rid: 8047813887805358158
-      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
-      data:
-        nodeCustomName: 
-        GUID: dc719b56-a24d-42d3-a1d8-14e22b1845ad
-        groupGUID: 
-        computeOrder: 3
-        position:
-          serializedVersion: 2
-          x: 755
-          y: 315.00003
-          width: 300
-          height: 117
-        expanded: 1
-        enabled: 1
-        debug: 0
-        nodeLock: 0
-        customRuntimeSystemRoot: {fileID: 0}
-        system:
-          rid: 8047813887805358159
-    - rid: 8047813887805358159
-      type: {class: GOSyncTransformToEntitySystem, ns: , asm: NewProject}
     - rid: 8047813887805358160
       type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
       data:
         nodeCustomName: 
         GUID: f22f369b-db01-419b-854a-00045292d131
         groupGUID: 
-        computeOrder: 2
+        computeOrder: 1
         position:
           serializedVersion: 2
-          x: 455
-          y: 315.00003
+          x: 155
+          y: 95.57085
           width: 300
           height: 117
         expanded: 1
@@ -166,3 +144,25 @@ MonoBehaviour:
           rid: 8047813933326139392
     - rid: 8047813933326139392
       type: {class: GOTransformSystem, ns: , asm: NewProject}
+    - rid: 8047813943337943049
+      type: {class: SystemNode, ns: ME.BECS.FeaturesGraph.Nodes, asm: ME.BECS.Features}
+      data:
+        nodeCustomName: 
+        GUID: 1a5a23f2-6513-4343-a6d8-8f51aee9c605
+        groupGUID: 
+        computeOrder: 3
+        position:
+          serializedVersion: 2
+          x: 755
+          y: 483.26
+          width: 300
+          height: 117
+        expanded: 1
+        enabled: 1
+        debug: 0
+        nodeLock: 0
+        customRuntimeSystemRoot: {fileID: 0}
+        system:
+          rid: 8047813943337943050
+    - rid: 8047813943337943050
+      type: {class: GOSyncTransformToEntitySystem, ns: , asm: NewProject}
