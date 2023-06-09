@@ -17,15 +17,16 @@ public struct Particles
     }
 }
 
-public class ParticlesEmitterSystem : IUpdate
+public struct ParticlesEmitterSystem : IUpdate
 {
     //public static Dictionary<int, ParticleSystem> ParticleSystemsLookup;
 
-    public static Ent Emit(ParticlesEmitterGO emitter)
+    public static Ent Emit(ParticleSystem particle)
     {
         var ent = Ent.New();
-        ent.GetShared<Particles.Shared>().particle = emitter.particle.Value;
+        ent.GetShared<Particles.Shared>().particle = particle;
         ent.Get<Particles.State>();
+        ent.Get<LifetimeData>().value = 1; // kill emitter after some time, doesn't matter yet
         return ent;
     }
 

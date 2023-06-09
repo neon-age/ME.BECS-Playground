@@ -17,7 +17,7 @@ public struct Weapon
         [NonSerialized]
         public Ent firePoint;
         [NonSerialized]
-        public ObjectReference<ParticlesEmitterGO> muzzleFlashParticle;
+        public ObjectReference<ParticleSystem> muzzleFlashParticle;
     }
     public struct State : IComponent
     {

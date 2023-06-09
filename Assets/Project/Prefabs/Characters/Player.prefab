@@ -280,7 +280,7 @@ MonoBehaviour:
         providerId: 1
         prefabId: 6
   firePoint: {fileID: 6174407782086010735}
-  muzzleFlashParticle: {fileID: 7727342048159115922, guid: cfbc207987eaf8549be04f32fba332a7, type: 3}
+  muzzleFlashPrefab: {fileID: 8907717711377054338, guid: cfbc207987eaf8549be04f32fba332a7, type: 3}
 --- !u!114 &8630490766181353789
 MonoBehaviour:
   m_ObjectHideFlags: 0
