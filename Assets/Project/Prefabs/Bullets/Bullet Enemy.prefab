@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 721516383665021947, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
       propertyPath: m_Parameters.widthMultiplier
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 721516383665021947, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
@@ -50,15 +50,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7233311492348807791, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7233311492348807791, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7233311492348807791, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7233311492348807791, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
       propertyPath: m_LocalPosition.x

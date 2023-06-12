@@ -176,6 +176,8 @@ MonoBehaviour:
     viewSource:
       providerId: 1
       prefabId: 9
+  collisionParticle: {fileID: 11400000, guid: a79e889c39a993a49807346a46fb1550, type: 2}
+  deathParticle: {fileID: 11400000, guid: 1c0a04ef59bccb443ad837bcad04b52c, type: 2}
   minCollisionSoundVelocity: 3
 --- !u!114 &6137799121330392683
 MonoBehaviour:
@@ -280,7 +282,7 @@ MonoBehaviour:
         providerId: 1
         prefabId: 6
   firePoint: {fileID: 6174407782086010735}
-  muzzleFlashPrefab: {fileID: 8907717711377054338, guid: cfbc207987eaf8549be04f32fba332a7, type: 3}
+  muzzleFlashParticle: {fileID: 11400000, guid: c0d4347c69bac844fb9a5244b88adee6, type: 2}
 --- !u!114 &8630490766181353789
 MonoBehaviour:
   m_ObjectHideFlags: 0

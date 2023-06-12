@@ -25,6 +25,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7062353844863402358, guid: 1e978e61ef2f535489cb22bfcf294ed1, type: 3}
+      propertyPath: muzzleFlashPrefab
+      value: 
+      objectReference: {fileID: 6585747859926726405, guid: 8ebc6fcd068c401428a78cbaf6b95e5a, type: 3}
+    - target: {fileID: 7062353844863402358, guid: 1e978e61ef2f535489cb22bfcf294ed1, type: 3}
+      propertyPath: muzzleFlashParticle
+      value: 
+      objectReference: {fileID: 11400000, guid: 98d90fd2e19820b41ab06b1b67a4c1cf, type: 2}
+    - target: {fileID: 7062353844863402358, guid: 1e978e61ef2f535489cb22bfcf294ed1, type: 3}
       propertyPath: weaponData.fireRate
       value: 0.5
       objectReference: {fileID: 0}
@@ -86,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 9b8805ea8634e1f40afcec5c70df633c, type: 2}
     - target: {fileID: 8244525652404058567, guid: 1e978e61ef2f535489cb22bfcf294ed1, type: 3}
       propertyPath: collisionSound.viewSource.prefabId
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8244525652404058567, guid: 1e978e61ef2f535489cb22bfcf294ed1, type: 3}
       propertyPath: collisionSound.viewSource.providerId
@@ -100,6 +108,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2602837507308635694, guid: 1e978e61ef2f535489cb22bfcf294ed1, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 7291102702036250904}
     - targetCorrespondingSourceObject: {fileID: 1053888146744709312, guid: 1e978e61ef2f535489cb22bfcf294ed1, type: 3}
       insertIndex: 3
       addedObject: {fileID: 3611064961146189058}
@@ -109,12 +120,39 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6137799121330392683, guid: 1e978e61ef2f535489cb22bfcf294ed1, type: 3}
   m_PrefabInstance: {fileID: 9084795442087808040}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6488719209769110022}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ace80be6a58cdf145b04a08fcb7c421a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6488719209769110022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2602837507308635694, guid: 1e978e61ef2f535489cb22bfcf294ed1, type: 3}
+  m_PrefabInstance: {fileID: 9084795442087808040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7291102702036250904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6488719209769110022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54995846a344643a6c87c4dbb7cb01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewModules: []
+  groupChangedTracker:
+    groupIds: []
+  ent:
+    id: 0
+    gen: 0
+    worldId: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &8120980778278313192 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1053888146744709312, guid: 1e978e61ef2f535489cb22bfcf294ed1, type: 3}

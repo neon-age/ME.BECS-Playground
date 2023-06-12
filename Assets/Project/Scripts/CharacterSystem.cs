@@ -12,7 +12,7 @@ using UnityEngine.Jobs;
 
 public struct Character
 {
-    public struct Inputs : IComponent, IConfigComponent
+    public struct Inputs : IComponent
     {
         [NonSerialized] public float2 move;
         [NonSerialized] public float3 cursorPos;
@@ -23,10 +23,10 @@ public struct Character
     {
         //[NonSerialized]
         public Ent weapon;
-        [NonSerialized]
-        public ObjectReference<Rigidbody> body;
+        [NonSerialized] public ObjectReference<Rigidbody> body;
+        [NonSerialized] public GlobalGOHandle.ID deathParticle;
     }
-    public struct Static : IComponentStatic
+    public struct Static : IConfigComponent
     {
         public float moveSpeed;
         public float groundDrag;
@@ -52,21 +52,33 @@ public struct CharacterSystem : IUpdate
 
         foreach (var ent in query)
         {
-            var trs = ent.GetAspect<TransformAspect>();
+            var trs = ent.Transform()
+            .LocalPositionRotation(out var localPos, out var localRot);
+
             var state = ent.Read<Character.State>();
-            var shared = ent.ReadStatic<Character.Static>();
+            var shared = ent.Read<Character.Static>();
             ref var input = ref ent.Get<Character.Inputs>();
 
             var body = state.body.Value;
             var bodyVel = body.velocity;
 
-            var localPos = trs.readLocalPosition;
-            var localRot = trs.readLocalRotation;
             var trsUp = math.mul(localRot, new float3(0, 1, 0));
 
             var moveDir = new Vector3(input.move.x, 0, input.move.y) * (shared.moveSpeed * dt);
 
             bool isGrounded = Physics.SphereCast(localPos, shared.groundRadius, -trsUp, out var groundHit, shared.groundDist, shared.groundMask);
+
+
+            if (ent.Has<LifetimeData>())
+            {
+                var lifetime = ent.Read<LifetimeData>();
+                if (lifetime.value <= 0) // are we going to die in this frame?
+                {
+                    var deathParticle = state.deathParticle.GetInstance<ParticleSystem>();
+                    ParticlesEmitterSystem.Emit(deathParticle, 10, localPos, Quaternion.identity);
+                    continue;
+                }
+            }
 
             /* // feels bad lol, needs tweaking
             var velMoveDot = Vector3.Dot(bodyVel, moveDir);
@@ -118,18 +130,18 @@ public struct CharacterSystem : IUpdate
 
             // Look towards with torque
             var angVel = body.angularVelocity;
-            var torque = PhysicsUtil.GetTorqueTowardsRotation(angVel, trs.readLocalRotation, lookRot, shared.lookSpring, shared.lookDamper, dt);
+            var torque = PhysicsUtil.GetTorqueTowardsRotation(angVel, localRot, lookRot, shared.lookSpring, shared.lookDamper, dt);
 
             body.AddTorque(torque * dt, ForceMode.VelocityChange);
 
-            if (!state.weapon.IsEmpty())
+            if (state.weapon.IsAlive())
             {
                 ref var weaponState = ref state.weapon.Get<Weapon.State>();
 
                 weaponState.owner = ent;
                 weaponState.shootInput = input.shoot;
 
-                var weaponTrs = state.weapon.GetAspect<TransformAspect>();
+                var weaponTrs = state.weapon.Transform().PositionRotation(out var pos, out var rot);
 
                 // Rotate weapon X towards cursor
                 var weaponLookAtRot = Quaternion.LookRotation(input.cursorPos - weaponTrs.position, trsUp);

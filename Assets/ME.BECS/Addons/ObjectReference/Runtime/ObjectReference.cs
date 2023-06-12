@@ -79,11 +79,6 @@ namespace ME.BECS.Addons {
         private static ObjectReferenceData GetData(ushort worldId) {
 
             var idx = worldId - 1;
-            if (idx < 0)
-            {
-                UnityEngine.Debug.Log(idx);
-                return null;
-            }
             if (dataArr == null || idx >= dataArr.Length) {
                 System.Array.Resize(ref dataArr, idx + 1);
             }
@@ -101,16 +96,12 @@ namespace ME.BECS.Addons {
         public static T ReadObject<T>(uint id, ushort worldId) where T : UnityEngine.Object {
             if (worldId == 0) return null;
             var data = GetData(worldId);
-            if (data == null)
-                return null;
             return data.ReadObject<T>(id);
         }
 
         [INLINE(256)]
         public static T GetObject<T>(ref uint id, ushort worldId, T obj) where T : UnityEngine.Object {
             var data = GetData(worldId);
-            if (data == null)
-                return null;
             return data.GetObject(ref id, obj);
         }
 

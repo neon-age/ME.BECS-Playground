@@ -14,22 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseConfig: {fileID: 0}
   data:
-    components: []
+    components:
+    - rid: 8047814073862062083
     isShared: 0
   sharedData:
     components: []
     isShared: 1
   staticData:
-    components:
-    - rid: 8047813984109985793
+    components: []
     isShared: 0
   references:
     version: 2
     RefIds:
-    - rid: 8047813984109985793
+    - rid: 8047814073862062083
       type: {class: Character/Static, ns: , asm: NewProject}
       data:
-        moveSpeed: 200
+        moveSpeed: 250
         groundDrag: 0.5
         lookSpring: 400
         lookDamper: 30

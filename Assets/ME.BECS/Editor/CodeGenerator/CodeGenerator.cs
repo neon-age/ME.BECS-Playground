@@ -194,6 +194,17 @@ namespace ME.BECS.Editor {
             
         }
 
+        private static bool HasComponentCustomSharedHash(System.Type type) {
+
+            var m = type.GetMethod(nameof(IComponentShared.GetHash), BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (m == null) {
+                var hasMethod = type.GetInterfaceMap(typeof(IComponentShared)).TargetMethods.Any(m => m.IsPrivate == true && m.Name == typeof(IComponentShared).FullName + "." + nameof(IComponentShared.GetHash));
+                return hasMethod;
+            }
+            return true;
+
+        }
+
         private static bool IsTagType(System.Type type) {
 
             if (System.Runtime.InteropServices.Marshal.SizeOf(type) <= 1 &&
@@ -356,8 +367,9 @@ namespace ME.BECS.Editor {
                         if (editorAssembly == false && info.isEditor == true) continue;
 
                         var isTag = IsTagType(component).ToString().ToLower();
+                        var hasCustomHash = HasComponentCustomSharedHash(component);
                         var type = component.FullName.Replace("+", ".");
-                        var str = $"StaticTypes<{type}>.ValidateShared(isTag: {isTag});";
+                        var str = $"StaticTypes<{type}>.ValidateShared(isTag: {isTag}, hasCustomHash: {hasCustomHash.ToString().ToLower()});";
                         typesContent.Add(str);
                         componentTypes.Add(component);
                         content.Add($"StaticTypesShared<{type}>.AOT();");

@@ -41,6 +41,5 @@ public struct KillZoneSystem : IUpdate
                 }
             }
         }
-        //Physics.OverlapBoxNonAlloc
     }
 }

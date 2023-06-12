@@ -16,22 +16,31 @@ MonoBehaviour:
   data:
     components:
     - rid: 8047813999986737154
+    - rid: 8047814046821384195
+    - rid: 8047814073862062084
     isShared: 0
   sharedData:
     components: []
     isShared: 1
   staticData:
-    components:
-    - rid: 8047813997762445312
+    components: []
     isShared: 0
   references:
     version: 2
     RefIds:
-    - rid: 8047813997762445312
+    - rid: 8047813999986737154
+      type: {class: AI/Data, ns: , asm: NewProject}
+      data:
+        minDistToShoot: 15
+    - rid: 8047814046821384195
+      type: {class: HealthData, ns: , asm: NewProject}
+      data:
+        value: 100
+    - rid: 8047814073862062084
       type: {class: Character/Static, ns: , asm: NewProject}
       data:
-        moveSpeed: 100
-        groundDrag: 0.25
+        moveSpeed: 50
+        groundDrag: 0.1
         lookSpring: 300
         lookDamper: 30
         groundMask:
@@ -40,7 +49,3 @@ MonoBehaviour:
         groundRadius: 0.4999
         groundDist: 1.01
         groundUpforce: 19
-    - rid: 8047813999986737154
-      type: {class: AI/Data, ns: , asm: NewProject}
-      data:
-        minDistToShoot: 15

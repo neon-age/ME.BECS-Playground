@@ -10,7 +10,7 @@ using UnityEngine;
 public struct Weapon
 {
     [Serializable]
-    public struct Data : IComponent, IConfigComponent
+    public struct Data : IConfigComponent
     {
         public float fireRate;
         public View bulletView;
@@ -46,21 +46,15 @@ public struct WeaponSystem : IUpdate
             {
                 state.fireTime = data.fireRate;
 
-                var firePointTrs = data.firePoint.GetAspect<TransformAspect>();
-                var firePos = firePointTrs.position;
+                data.firePoint.Transform().PositionRotation(out var firePos, out var fireRot);
 
-                var muzzleParticle = ParticlesEmitterSystem.Emit(data.muzzleFlashParticle.Value);
-                muzzleParticle.GetAspect<TransformAspect>().localPosition = firePos;
+                ParticlesEmitterSystem.Emit(data.muzzleFlashParticle.Value, 1, firePos, fireRot, data.firePoint);
 
                 var bulletEnt = Ent.New();
                 //bulletEnt.Get<BulletState>();
                 bulletEnt.Get<Bullet.State>().ignoredEnt = state.owner;
-                
-                var bulletTrs = bulletEnt.GetAspect<TransformAspect>(); 
 
-                bulletTrs.localPosition = firePos;
-                bulletTrs.localRotation = firePointTrs.rotation;
-
+                bulletEnt.Transform().LocalPositionRotation(firePos, fireRot);
                 bulletEnt.InstantiateView(data.bulletView);
             }
         }

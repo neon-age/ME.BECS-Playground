@@ -3,34 +3,21 @@ namespace ME.BECS {
     public static unsafe class AOTBurstHelper {
         [UnityEngine.Scripting.PreserveAttribute] 
         public static void AOT() {
-            StaticSystemTypes<CharacterSystem>.Validate();
-BurstCompileOnUpdateNoBurst<CharacterSystem>.MakeMethod(null);
-BurstCompileMethod.MakeUpdate<CharacterSystem>(default);
-StaticSystemTypes<AISystem>.Validate();
+            StaticSystemTypes<AISystem>.Validate();
 BurstCompileOnUpdateNoBurst<AISystem>.MakeMethod(null);
 BurstCompileMethod.MakeUpdate<AISystem>(default);
-StaticSystemTypes<CubeTestSystem>.Validate();
-BurstCompileOnAwakeNoBurst<CubeTestSystem>.MakeMethod(null);
-BurstCompileOnUpdateNoBurst<CubeTestSystem>.MakeMethod(null);
-BurstCompileMethod.MakeAwake<CubeTestSystem>(default);
-BurstCompileMethod.MakeUpdate<CubeTestSystem>(default);
-StaticSystemTypes<ManagedCommandsSystem>.Validate();
-BurstCompileOnAwakeNoBurst<ManagedCommandsSystem>.MakeMethod(null);
-BurstCompileOnUpdateNoBurst<ManagedCommandsSystem>.MakeMethod(null);
-BurstCompileMethod.MakeAwake<ManagedCommandsSystem>(default);
-BurstCompileMethod.MakeUpdate<ManagedCommandsSystem>(default);
-StaticSystemTypes<WeaponSystem>.Validate();
-BurstCompileOnUpdateNoBurst<WeaponSystem>.MakeMethod(null);
-BurstCompileMethod.MakeUpdate<WeaponSystem>(default);
+StaticSystemTypes<PlayerInputsSystem>.Validate();
+BurstCompileOnUpdateNoBurst<PlayerInputsSystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<PlayerInputsSystem>(default);
+StaticSystemTypes<EnemySpawnSystem>.Validate();
+BurstCompileOnUpdateNoBurst<EnemySpawnSystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<EnemySpawnSystem>(default);
+StaticSystemTypes<LifetimeSystem>.Validate();
+BurstCompileOnUpdateNoBurst<LifetimeSystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<LifetimeSystem>(default);
 StaticSystemTypes<KillZoneSystem>.Validate();
 BurstCompileOnUpdateNoBurst<KillZoneSystem>.MakeMethod(null);
 BurstCompileMethod.MakeUpdate<KillZoneSystem>(default);
-StaticSystemTypes<BulletSystem>.Validate();
-BurstCompileOnUpdateNoBurst<BulletSystem>.MakeMethod(null);
-BurstCompileMethod.MakeUpdate<BulletSystem>(default);
-StaticSystemTypes<GOSyncTransformToEntitySystem>.Validate();
-BurstCompileOnUpdateNoBurst<GOSyncTransformToEntitySystem>.MakeMethod(null);
-BurstCompileMethod.MakeUpdate<GOSyncTransformToEntitySystem>(default);
 StaticSystemTypes<GOTransformSystem>.Validate();
 BurstCompileOnUpdate<GOTransformSystem>.MakeMethod(null);
 BurstCompileOnDestroy<GOTransformSystem>.MakeMethod(null);
@@ -38,30 +25,53 @@ BurstCompileOnUpdateNoBurst<GOTransformSystem>.MakeMethod(null);
 BurstCompileOnDestroyNoBurst<GOTransformSystem>.MakeMethod(null);
 BurstCompileMethod.MakeUpdate<GOTransformSystem>(default);
 BurstCompileMethod.MakeDestroy<GOTransformSystem>(default);
+StaticSystemTypes<ManagedCommandsSystem>.Validate();
+BurstCompileOnAwakeNoBurst<ManagedCommandsSystem>.MakeMethod(null);
+BurstCompileOnUpdateNoBurst<ManagedCommandsSystem>.MakeMethod(null);
+BurstCompileMethod.MakeAwake<ManagedCommandsSystem>(default);
+BurstCompileMethod.MakeUpdate<ManagedCommandsSystem>(default);
+StaticSystemTypes<BulletSystem>.Validate();
+BurstCompileOnUpdateNoBurst<BulletSystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<BulletSystem>(default);
+StaticSystemTypes<WeaponSystem>.Validate();
+BurstCompileOnUpdateNoBurst<WeaponSystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<WeaponSystem>(default);
+StaticSystemTypes<CubeTestSystem>.Validate();
+BurstCompileOnAwakeNoBurst<CubeTestSystem>.MakeMethod(null);
+BurstCompileOnUpdateNoBurst<CubeTestSystem>.MakeMethod(null);
+BurstCompileMethod.MakeAwake<CubeTestSystem>(default);
+BurstCompileMethod.MakeUpdate<CubeTestSystem>(default);
+StaticSystemTypes<HealthSystem>.Validate();
+BurstCompileOnUpdateNoBurst<HealthSystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<HealthSystem>(default);
 StaticSystemTypes<ParticlesEmitterSystem>.Validate();
 BurstCompileOnUpdateNoBurst<ParticlesEmitterSystem>.MakeMethod(null);
 BurstCompileMethod.MakeUpdate<ParticlesEmitterSystem>(default);
-StaticSystemTypes<LifetimeSystem>.Validate();
-BurstCompileOnUpdateNoBurst<LifetimeSystem>.MakeMethod(null);
-BurstCompileMethod.MakeUpdate<LifetimeSystem>(default);
-StaticSystemTypes<PlayerInputsSystem>.Validate();
-BurstCompileOnUpdateNoBurst<PlayerInputsSystem>.MakeMethod(null);
-BurstCompileMethod.MakeUpdate<PlayerInputsSystem>(default);
+StaticSystemTypes<CharacterSystem>.Validate();
+BurstCompileOnUpdateNoBurst<CharacterSystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<CharacterSystem>(default);
+StaticSystemTypes<GOSyncTransformToEntitySystem>.Validate();
+BurstCompileOnUpdateNoBurst<GOSyncTransformToEntitySystem>.MakeMethod(null);
+BurstCompileMethod.MakeUpdate<GOSyncTransformToEntitySystem>(default);
 StaticSystemTypes<ME.BECS.TransformAspect.TransformWorldMatrixUpdateSystem>.Validate();
 BurstCompileOnUpdateNoBurst<ME.BECS.TransformAspect.TransformWorldMatrixUpdateSystem>.MakeMethod(null);
 BurstCompileMethod.MakeUpdate<ME.BECS.TransformAspect.TransformWorldMatrixUpdateSystem>(default);
-StaticTypes<Weapon.State>.AOT();
-StaticTypes<Weapon.Data>.AOT();
-StaticTypes<AI.Data>.AOT();
-StaticTypes<HitboxLinkData>.AOT();
-StaticTypes<CubeTestSystem.Cube>.AOT();
-StaticTypes<GOTransformSystem.TransformCache>.AOT();
-StaticTypes<Character.State>.AOT();
-StaticTypes<Bullet.State>.AOT();
+StaticTypes<Character.Static>.AOT();
 StaticTypes<KillZoneData>.AOT();
-StaticTypes<Character.Inputs>.AOT();
-StaticTypes<LifetimeData>.AOT();
 StaticTypes<Particles.State>.AOT();
+StaticTypes<AI.Data>.AOT();
+StaticTypes<Weapon.Data>.AOT();
+StaticTypes<LifetimeData>.AOT();
+StaticTypes<Bullet.State>.AOT();
+StaticTypes<Bullet.Config>.AOT();
+StaticTypes<Weapon.State>.AOT();
+StaticTypes<Character.Inputs>.AOT();
+StaticTypes<Bullet.Shared>.AOT();
+StaticTypes<CubeTestSystem.Cube>.AOT();
+StaticTypes<HealthData>.AOT();
+StaticTypes<HitboxLinkData>.AOT();
+StaticTypes<Character.State>.AOT();
+StaticTypes<GOTransformSystem.TransformCache>.AOT();
 StaticTypes<ME.BECS.Views.ViewComponent>.AOT();
 StaticTypes<ME.BECS.Views.IsViewRequested>.AOT();
 StaticTypes<ME.BECS.Views.MeshRendererComponent>.AOT();
@@ -79,9 +89,6 @@ StaticTypes<ME.BECS.TransformAspect.ParentComponent>.AOT();
 StaticTypes<ME.BECS.TransformAspect.ChildrenComponent>.AOT();
 StaticTypes<ME.BECS.TransformAspect.LocalPositionComponent>.AOT();
 StaticTypes<ME.BECS.TransformAspect.IsHierarchyDirtyComponent>.AOT();
-StaticTypesShared<Bullet.Shared>.AOT();
-StaticTypesShared<Particles.Shared>.AOT();
-StaticTypesStatic<Character.Static>.AOT();
         }
     }
         
@@ -98,18 +105,20 @@ StaticTypesStatic<Character.Static>.AOT();
         [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.BeforeSplashScreen)]
         public static void Load() {
             JobUtils.Initialize();
-            StaticSystemTypes<CharacterSystem>.Validate();
-StaticSystemTypes<AISystem>.Validate();
-StaticSystemTypes<CubeTestSystem>.Validate();
-StaticSystemTypes<ManagedCommandsSystem>.Validate();
-StaticSystemTypes<WeaponSystem>.Validate();
-StaticSystemTypes<KillZoneSystem>.Validate();
-StaticSystemTypes<BulletSystem>.Validate();
-StaticSystemTypes<GOSyncTransformToEntitySystem>.Validate();
-StaticSystemTypes<GOTransformSystem>.Validate();
-StaticSystemTypes<ParticlesEmitterSystem>.Validate();
-StaticSystemTypes<LifetimeSystem>.Validate();
+            StaticSystemTypes<AISystem>.Validate();
 StaticSystemTypes<PlayerInputsSystem>.Validate();
+StaticSystemTypes<EnemySpawnSystem>.Validate();
+StaticSystemTypes<LifetimeSystem>.Validate();
+StaticSystemTypes<KillZoneSystem>.Validate();
+StaticSystemTypes<GOTransformSystem>.Validate();
+StaticSystemTypes<ManagedCommandsSystem>.Validate();
+StaticSystemTypes<BulletSystem>.Validate();
+StaticSystemTypes<WeaponSystem>.Validate();
+StaticSystemTypes<CubeTestSystem>.Validate();
+StaticSystemTypes<HealthSystem>.Validate();
+StaticSystemTypes<ParticlesEmitterSystem>.Validate();
+StaticSystemTypes<CharacterSystem>.Validate();
+StaticSystemTypes<GOSyncTransformToEntitySystem>.Validate();
 StaticSystemTypes<ME.BECS.TransformAspect.TransformWorldMatrixUpdateSystem>.Validate();
 StaticTypes<ME.BECS.TransformAspect.LocalScaleComponent>.ApplyGroup(typeof(ME.BECS.TransformAspect.TransformComponentGroup));
 StaticTypes<ME.BECS.TransformAspect.LocalPositionComponent>.ApplyGroup(typeof(ME.BECS.TransformAspect.TransformComponentGroup));
@@ -117,18 +126,22 @@ StaticTypes<ME.BECS.TransformAspect.ChildrenComponent>.ApplyGroup(typeof(ME.BECS
 StaticTypes<ME.BECS.TransformAspect.IsHierarchyDirtyComponent>.ApplyGroup(typeof(ME.BECS.TransformAspect.TransformComponentGroup));
 StaticTypes<ME.BECS.TransformAspect.LocalRotationComponent>.ApplyGroup(typeof(ME.BECS.TransformAspect.TransformComponentGroup));
 StaticTypes<ME.BECS.TransformAspect.ParentComponent>.ApplyGroup(typeof(ME.BECS.TransformAspect.TransformComponentGroup));
-StaticTypes<Weapon.State>.Validate(isTag: false);
-StaticTypes<Weapon.Data>.Validate(isTag: false);
-StaticTypes<AI.Data>.Validate(isTag: false);
-StaticTypes<HitboxLinkData>.Validate(isTag: false);
-StaticTypes<CubeTestSystem.Cube>.Validate(isTag: false);
-StaticTypes<GOTransformSystem.TransformCache>.Validate(isTag: false);
-StaticTypes<Character.State>.Validate(isTag: false);
-StaticTypes<Bullet.State>.Validate(isTag: false);
+StaticTypes<Character.Static>.Validate(isTag: false);
 StaticTypes<KillZoneData>.Validate(isTag: false);
-StaticTypes<Character.Inputs>.Validate(isTag: false);
-StaticTypes<LifetimeData>.Validate(isTag: false);
 StaticTypes<Particles.State>.Validate(isTag: false);
+StaticTypes<AI.Data>.Validate(isTag: false);
+StaticTypes<Weapon.Data>.Validate(isTag: false);
+StaticTypes<LifetimeData>.Validate(isTag: false);
+StaticTypes<Bullet.State>.Validate(isTag: false);
+StaticTypes<Bullet.Config>.Validate(isTag: false);
+StaticTypes<Weapon.State>.Validate(isTag: false);
+StaticTypes<Character.Inputs>.Validate(isTag: false);
+StaticTypes<Bullet.Shared>.Validate(isTag: false);
+StaticTypes<CubeTestSystem.Cube>.Validate(isTag: false);
+StaticTypes<HealthData>.Validate(isTag: false);
+StaticTypes<HitboxLinkData>.Validate(isTag: false);
+StaticTypes<Character.State>.Validate(isTag: false);
+StaticTypes<GOTransformSystem.TransformCache>.Validate(isTag: false);
 StaticTypes<ME.BECS.Views.ViewComponent>.Validate(isTag: false);
 StaticTypes<ME.BECS.Views.IsViewRequested>.Validate(isTag: true);
 StaticTypes<ME.BECS.Views.MeshRendererComponent>.Validate(isTag: false);
@@ -148,9 +161,6 @@ StaticTypes<ME.BECS.TransformAspect.ParentComponent>.Validate(isTag: false);
 StaticTypes<ME.BECS.TransformAspect.ChildrenComponent>.Validate(isTag: false);
 StaticTypes<ME.BECS.TransformAspect.LocalPositionComponent>.Validate(isTag: false);
 StaticTypes<ME.BECS.TransformAspect.IsHierarchyDirtyComponent>.Validate(isTag: false);
-StaticTypes<Bullet.Shared>.ValidateShared(isTag: false);
-StaticTypes<Particles.Shared>.ValidateShared(isTag: false);
-StaticTypes<Character.Static>.ValidateStatic(isTag: false);
 AspectTypeInfo<ME.BECS.TestAspect>.Validate();
 AspectTypeInfo<ME.BECS.TransformAspect.TransformAspect>.Validate();
 AspectTypeInfo<ME.BECS.TransformAspect.TransformAspect>.with.Resize(2);
@@ -177,7 +187,7 @@ WorldStaticCallbacks.RegisterCallback<World>(AspectsConstruct);
         }
         public static void ViewsLoad(ref ME.BECS.Views.ViewsModuleData viewsModule) {
 ME.BECS.Views.ViewsTypeInfo.RegisterType<BulletView>(new ME.BECS.Views.ViewTypeInfo() {
-flags = (ME.BECS.Views.TypeFlags)4,
+flags = (ME.BECS.Views.TypeFlags)5,
 });
 ME.BECS.Views.ViewsTypeInfo.RegisterType<SoundView>(new ME.BECS.Views.ViewTypeInfo() {
 flags = (ME.BECS.Views.TypeFlags)4,
@@ -187,7 +197,7 @@ flags = (ME.BECS.Views.TypeFlags)0,
 });
 }
 public static void NetworkLoad(ref ME.BECS.Network.UnsafeNetworkModule.MethodsStorage methods) {
-methods.Add(ME.BECS.Network.UnsafeNetworkModule.TestNetMethod);
+
 }
 public static void AspectsConstruct(ref World world) {
 {

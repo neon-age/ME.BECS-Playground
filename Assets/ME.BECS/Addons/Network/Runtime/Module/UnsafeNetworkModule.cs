@@ -16,25 +16,23 @@ namespace ME.BECS.Network {
         /// Tick
         /// </summary>
         public ulong tick;
-        
         /// <summary>
         /// All packages ordered by playerId first
         /// </summary>
         public uint playerId;
         /// <summary>
-        /// Then by localOrder
-        /// </summary>
-        public byte localOrder;
-
-        /// <summary>
         /// Registered method id
         /// </summary>
         public ushort methodId;
-        
         /// <summary>
         /// Package data
         /// </summary>
         public ushort dataSize;
+        /// <summary>
+        /// Then by localOrder
+        /// </summary>
+        public byte localOrder;
+        
         [NativeDisableUnsafePtrRestriction]
         public byte* data;
 
@@ -638,6 +636,7 @@ namespace ME.BECS.Network {
             this.networkTransport.OnAwake();
         }
 
+        /*
         public struct TestData {
 
             public int a;
@@ -653,6 +652,7 @@ namespace ME.BECS.Network {
             UnityEngine.Debug.Log("TestNetMethod: " + input.a + " :: " + input.b + " :: " + input.c);
             return dependsOn;
         }
+        */
 
         [INLINE(256)]
         public void Dispose() {
@@ -723,6 +723,12 @@ namespace ME.BECS.Network {
 
         [INLINE(256)]
         public static void AddEvent<T>(INetworkTransport networkTransport, Data* moduleData, uint playerId, ushort methodId, in T data, ulong negativeDeltaTicks) where T : unmanaged {
+
+            if (networkTransport != null && networkTransport.Status != TransportStatus.Connected) {
+                
+                E.CustomException.Throw("NetworkModule is not connected");
+                
+            }
             
             // Form the package
             var tick = moduleData->GetTargetTick() - negativeDeltaTicks;

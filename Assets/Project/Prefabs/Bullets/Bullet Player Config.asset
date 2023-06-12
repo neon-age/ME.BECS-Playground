@@ -16,10 +16,10 @@ MonoBehaviour:
   data:
     components:
     - rid: 8047813910728802306
+    - rid: 8047814073862062081
     isShared: 0
   sharedData:
-    components:
-    - rid: 8047813997762445315
+    components: []
     isShared: 1
   staticData:
     components: []
@@ -30,12 +30,14 @@ MonoBehaviour:
     - rid: 8047813910728802306
       type: {class: LifetimeData, ns: , asm: NewProject}
       data:
-        value: 0.7
-    - rid: 8047813997762445315
-      type: {class: Bullet/Shared, ns: , asm: NewProject}
+        value: 0.5
+    - rid: 8047814073862062081
+      type: {class: Bullet/Config, ns: , asm: NewProject}
       data:
         speed: 1
+        radius: 0.1
         hitForce: 15
+        damage: 10
         rayMask:
           serializedVersion: 2
           m_Bits: 9

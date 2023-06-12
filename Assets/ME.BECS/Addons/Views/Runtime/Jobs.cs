@@ -75,7 +75,7 @@ namespace ME.BECS.Views {
                                 version = viewEnt.Version - 1, // To be sure ApplyState will call at least once
                             });
                         } else {
-                            UnityEngine.Debug.LogError("Item not found");
+                            UnityEngine.Debug.Log("Item not found");
                         }
                     }
                 }

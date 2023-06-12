@@ -13,6 +13,8 @@ public class CharacterGO : MonoBehaviour, IBeginTickInit
     public GOEntity weapon;
     public Rigidbody body;
     public View collisionSound;
+    public GlobalGOHandle collisionParticle;
+    public GlobalGOHandle deathParticle;
     public float minCollisionSoundVelocity;
 
     ContactPoint collisionContact;
@@ -23,6 +25,7 @@ public class CharacterGO : MonoBehaviour, IBeginTickInit
     {
         ctx.ent.Set(new Character.State
         {
+            deathParticle = deathParticle,
             weapon = weapon.ent,
             body = body,
         });
@@ -34,9 +37,14 @@ public class CharacterGO : MonoBehaviour, IBeginTickInit
         if (collisionContact.impulse.magnitude < minCollisionSoundVelocity)
             return;
         var soundEnt = Ent.New();
-        var soundTrs = soundEnt.GetAspect<TransformAspect>();
-        soundTrs.localPosition = collisionContact.point;
+
+        var point = collisionContact.point;
+        soundEnt.Transform().LocalPosition(point);
         soundEnt.InstantiateView(collisionSound);
+
+        var particle = collisionParticle.GetInstance().GetComponent<ParticleSystem>();
+
+        ParticlesEmitterSystem.Emit(particle, 1, point, Quaternion.identity);
     }
 
     void Start()

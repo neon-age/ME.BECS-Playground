@@ -26,6 +26,11 @@ namespace ME.BECS {
             public SharedData(T[] components) {
                 
                 var cnt = (uint)components.Length;
+                if (cnt == 0u) {
+                    this = default;
+                    return;
+                }
+                
                 this.offsets = _makeArray<uint>(cnt);
                 this.typeIds = _makeArray<uint>(cnt);
                 this.hashes = _makeArray<uint>(cnt);
@@ -36,12 +41,13 @@ namespace ME.BECS {
                 for (uint i = 0u; i < components.Length; ++i) {
                     var comp = components[i];
                     StaticTypesLoadedManaged.typeToId.TryGetValue(comp.GetType(), out var typeId);
+                    StaticTypesLoadedManaged.loadedSharedTypesCustomHash.TryGetValue(typeId, out var hasCustomHash);
                     E.IS_VALID_TYPE_ID(typeId);
                     var elemSize = StaticTypes.sizes.Get(typeId);
                     size += elemSize;
                     this.offsets[i] = offset;
                     this.typeIds[i] = typeId;
-                    this.hashes[i] = comp.GetHash();
+                    this.hashes[i] = hasCustomHash == true ? comp.GetHash() : Components.COMPONENT_SHARED_DEFAULT_HASH;
                     offset += elemSize;
                 }
                 this.data = (byte*)UnsafeUtility.Malloc(size, 4, Allocator.Persistent);
@@ -99,10 +105,14 @@ namespace ME.BECS {
             public Data(T[] components) {
                 
                 var cnt = (uint)components.Length;
+                if (cnt == 0u) {
+                    this = default;
+                    return;
+                }
                 this.offsets = _makeArray<uint>(cnt);
                 this.typeIds = _makeArray<uint>(cnt);
                 this.count = cnt;
-
+                
                 var offset = 0u;
                 var size = 0u;
                 for (uint i = 0u; i < components.Length; ++i) {

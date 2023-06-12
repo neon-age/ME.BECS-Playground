@@ -8,13 +8,13 @@ public class WeaponGO : MonoBehaviour, IBeginTickInit
 {
     public Weapon.Data weaponData;
     public GOEntity firePoint;
-    public ParticleSystem muzzleFlashPrefab;
+    public GlobalGOHandle muzzleFlashParticle;
 
     public void OnBeginTickInit(IBeginTickInit.Context ctx)
     {
         weaponData.firePoint = firePoint.ent;
         ctx.ent.Set(weaponData);
-        ctx.ent.Get<Weapon.Data>().muzzleFlashParticle = GlobalPrefabInstance.GetInstanceByPrefab(muzzleFlashPrefab);
+        ctx.ent.Get<Weapon.Data>().muzzleFlashParticle = muzzleFlashParticle.GetInstance().GetComponent<ParticleSystem>();
         ctx.ent.Get<Weapon.State>();
     }
 
