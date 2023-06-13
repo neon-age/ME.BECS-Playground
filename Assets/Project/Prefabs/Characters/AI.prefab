@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 98d90fd2e19820b41ab06b1b67a4c1cf, type: 2}
     - target: {fileID: 7062353844863402358, guid: 1e978e61ef2f535489cb22bfcf294ed1, type: 3}
       propertyPath: weaponData.fireRate
-      value: 0.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7062353844863402358, guid: 1e978e61ef2f535489cb22bfcf294ed1, type: 3}
       propertyPath: weaponData.bulletConfig.sourceId

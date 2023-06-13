@@ -31,7 +31,7 @@ MonoBehaviour:
     - rid: 8047813999986737154
       type: {class: AI/Data, ns: , asm: NewProject}
       data:
-        minDistToShoot: 15
+        minDistToShoot: 20
     - rid: 8047814046821384195
       type: {class: HealthData, ns: , asm: NewProject}
       data:

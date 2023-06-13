@@ -109,7 +109,7 @@ public struct ParticlesEmitterSystem : IUpdate
 
                 var hasParent = !state.parent.IsEmpty() && state.parent.IsAlive();
 
-                if (!state.initialized || hasParent)
+                //if (!state.initialized || hasParent)
                 {
                     var trs = (hasParent ? state.parent : ent).Transform();
 

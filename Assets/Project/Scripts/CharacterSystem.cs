@@ -25,6 +25,7 @@ public struct Character
         public Ent weapon;
         [NonSerialized] public ObjectReference<Rigidbody> body;
         [NonSerialized] public GlobalGOHandle.ID deathParticle;
+        [NonSerialized] public View deathSound;
     }
     public struct Static : IConfigComponent
     {
@@ -69,16 +70,18 @@ public struct CharacterSystem : IUpdate
             bool isGrounded = Physics.SphereCast(localPos, shared.groundRadius, -trsUp, out var groundHit, shared.groundDist, shared.groundMask);
 
 
-            if (ent.Has<LifetimeData>())
+            var lifetime = ent.TryRead<LifetimeData>(out bool hasLifetime);
+            if (hasLifetime && lifetime.value <= 0) // are we going to die in this frame?
             {
-                var lifetime = ent.Read<LifetimeData>();
-                if (lifetime.value <= 0) // are we going to die in this frame?
-                {
-                    var deathParticle = state.deathParticle.GetInstance<ParticleSystem>();
-                    ParticlesEmitterSystem.Emit(deathParticle, 10, localPos, Quaternion.identity);
-                    continue;
-                }
+                var deathParticle = state.deathParticle.GetInstance<ParticleSystem>();
+                ParticlesEmitterSystem.Emit(deathParticle, 10, localPos, Quaternion.identity);
+
+                var deathSound = Ent.New();
+                deathSound.Transform().LocalPosition(localPos);
+                deathSound.InstantiateView(state.deathSound);
+                continue;
             }
+            
 
             /* // feels bad lol, needs tweaking
             var velMoveDot = Vector3.Dot(bodyVel, moveDir);

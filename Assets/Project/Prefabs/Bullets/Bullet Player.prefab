@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5135229092403528376}
   - component: {fileID: 9027315157631530750}
   - component: {fileID: 800739377632055539}
-  - component: {fileID: -6208232004507905540}
   - component: {fileID: 721516383665021947}
   m_Layer: 6
   m_Name: Bullet Player
@@ -108,30 +107,14 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: a4fa0db2d56a17a4585462c9572a5b50, type: 2}
   trail: {fileID: 721516383665021947}
   hitParticle: {fileID: 11400000, guid: 745244fd790f530459e57911e847862f, type: 2}
+  emitParticle: {fileID: 11400000, guid: 2b74ca0c782953e46a9b7f7a24fdbe1a, type: 2}
+  spawnSound:
+    viewSource:
+      providerId: 1
+      prefabId: 14
   references:
     version: 2
     RefIds: []
---- !u!65 &-6208232004507905540
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2464366041970230307}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!96 &721516383665021947
 TrailRenderer:
   serializedVersion: 3

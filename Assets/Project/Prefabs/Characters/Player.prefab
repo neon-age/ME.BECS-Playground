@@ -176,6 +176,10 @@ MonoBehaviour:
     viewSource:
       providerId: 1
       prefabId: 9
+  deathSound:
+    viewSource:
+      providerId: 1
+      prefabId: 15
   collisionParticle: {fileID: 11400000, guid: a79e889c39a993a49807346a46fb1550, type: 2}
   deathParticle: {fileID: 11400000, guid: 1c0a04ef59bccb443ad837bcad04b52c, type: 2}
   minCollisionSoundVelocity: 3

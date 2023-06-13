@@ -13,6 +13,7 @@ public class CharacterGO : MonoBehaviour, IBeginTickInit
     public GOEntity weapon;
     public Rigidbody body;
     public View collisionSound;
+    public View deathSound;
     public GlobalGOHandle collisionParticle;
     public GlobalGOHandle deathParticle;
     public float minCollisionSoundVelocity;
@@ -26,6 +27,7 @@ public class CharacterGO : MonoBehaviour, IBeginTickInit
         ctx.ent.Set(new Character.State
         {
             deathParticle = deathParticle,
+            deathSound = deathSound,
             weapon = weapon.ent,
             body = body,
         });

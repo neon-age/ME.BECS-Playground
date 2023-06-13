@@ -10,6 +10,8 @@ public class BulletView : EntityView
     public EntityConfig config;
     public TrailRenderer trail;
     public GlobalGOHandle hitParticle;
+    public GlobalGOHandle emitParticle;
+    public View spawnSound;
     
     float startTrailTime;
     Vector3 startScale;
@@ -29,7 +31,10 @@ public class BulletView : EntityView
 
         var trs = ent.Transform();
 
-        transform.position = trs.position;
+        var pos = trs.localPosition;
+        var rot = trs.localRotation;
+
+        transform.localPosition = pos;
         transform.localScale = startScale;
         trs.localScale = startScale;
 
@@ -43,6 +48,13 @@ public class BulletView : EntityView
         shared.startTrailTime = startTrailTime;
         shared.startScale = startScale;
         shared.hitParticle = hitParticle;
+
+        var sound = Ent.New();
+        sound.Transform().LocalPosition(pos);
+        sound.InstantiateView(spawnSound);
+
+        var lifetime = ent.Read<LifetimeData>();
+        state.emitParticle = ParticlesEmitterSystem.Emit(emitParticle.GetInstance<ParticleSystem>(), lifetime.value, pos, rot);
     }
 /*
     protected override void OnDisableToPool()

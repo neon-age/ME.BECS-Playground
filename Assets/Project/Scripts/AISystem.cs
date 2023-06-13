@@ -41,11 +41,11 @@ public struct AISystem : IUpdate
             charInput.move = math.normalize(new float2(dir.x, dir.z));
             charInput.shoot = isCloseToPlayer;
 
-            if (!charState.weapon.IsEmpty())
-            {
-                // Don't decrease fire time when player is not in reach
-                charState.weapon.Get<Weapon.State>().lockFireTime = !isCloseToPlayer;
-            }
+            //if (charState.weapon.IsAlive())
+            //{
+            //    // Don't decrease fire time when player is not in reach
+            //    charState.weapon.Get<Weapon.State>().lockFireTime = !isCloseToPlayer;
+            //}
         }
     }
 }

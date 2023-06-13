@@ -29,6 +29,7 @@ public struct Bullet
         public bool isDisabled;
         public bool isInitialized;
         public Ent ignoredEnt;
+        public Ent emitParticle;
         public ObjectReference<TrailRenderer> trail;
     }
 }
@@ -39,6 +40,8 @@ public struct BulletSystem : IUpdate
     {
         var dt = ctx.deltaTime;
         var query = API.Query(ctx).With<Bullet.State>();
+
+        var physicsScene = Physics.defaultPhysicsScene;
         
         foreach (var ent in query)
         {
@@ -60,27 +63,26 @@ public struct BulletSystem : IUpdate
 
             trail.time = trailTime;
 
-            if (state.isDisabled)
-            {
-                trs.localScale = shared.startScale * lifetimeLerp;
-                lifetime.value -= dt;
-                continue;
-            }
+            //if (state.isDisabled)
+            //{
+            //    trs.localScale = shared.startScale * lifetimeLerp;
+            //    lifetime.value -= dt;
+            //    continue;
+            //}
 
             ref var localPos = ref trs.localPosition;
             var localRot = trs.readLocalRotation;
 
             var prevPos = localPos;
-            var rayDir = prevPos - localPos;
-            var rayDist = math.length(rayDir);
-
             var dir = math.mul(localRot, new float3(0, 0, 1));
 
             localPos += dir * config.speed;
+            Vector3 rayDir = localPos - prevPos;
+            var rayDist = rayDir.magnitude;
 
-            Debug.DrawRay(prevPos, math.normalize(rayDir) * 10, Color.red);
+            state.emitParticle.Transform().localPosition = localPos;
 
-            if (Physics.Linecast(prevPos, localPos, out var hit, config.rayMask))
+            if (physicsScene.SphereCast(prevPos, config.radius, rayDir, out var hit, rayDist, config.rayMask))
             {
                 var hitCollider = hit.collider;
                 var hitBody = hitCollider.attachedRigidbody;
@@ -109,9 +111,12 @@ public struct BulletSystem : IUpdate
                     var hitParticle = shared.hitParticle.GetInstance<ParticleSystem>();
                     ParticlesEmitterSystem.Emit(hitParticle, 1, hitPoint, hitRot);
 
-                    lifetime.value = Mathf.Min(trailTime, shared.startTrailTime);
+                    //lifetime.value = Mathf.Min(trailTime, shared.startTrailTime);
+                    lifetime.value = 0;
+                    state.emitParticle.Get<LifetimeData>().value = 0;
 
                     state.isDisabled = true;
+                   
                     ent.Set(state);
                 }
             }

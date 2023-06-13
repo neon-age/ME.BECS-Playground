@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a636fa88b5054528be78fe9f569307ed, type: 3}
   m_Name: ViewsRegistry
   m_EditorClassIdentifier: 
-  prefabId: 10
+  prefabId: 15
   items:
   - prefab: {fileID: 800739377632055539, guid: 5d633e5b93ff7a64d80abf14767e1b03, type: 3}
     prefabId: 6
@@ -28,4 +28,13 @@ MonoBehaviour:
     references: 2
   - prefab: {fileID: 7291102702036250904, guid: c1190923684200848bcbe87577802d96, type: 3}
     prefabId: 10
+    references: 1
+  - prefab: {fileID: 1663375020545709199, guid: f80ac33bd2d29b248b4121d974a4323e, type: 3}
+    prefabId: 12
+    references: 1
+  - prefab: {fileID: 1663375020545709199, guid: b1ebca8ef728ef045aa3f90cfd0a2d9e, type: 3}
+    prefabId: 14
+    references: 1
+  - prefab: {fileID: 1663375020545709199, guid: f1ad29c9713065647a2287578a97d78a, type: 3}
+    prefabId: 15
     references: 1

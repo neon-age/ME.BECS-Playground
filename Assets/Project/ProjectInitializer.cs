@@ -13,7 +13,6 @@ public class ProjectInitializer : WorldInitializer
         base.Awake();
     }
 
-/*
     void FixedUpdate()
     {
         base.LateUpdate();
@@ -28,5 +27,5 @@ public class ProjectInitializer : WorldInitializer
     protected override void Update()
     {
         // do nothing
-    }*/
+    }
 }

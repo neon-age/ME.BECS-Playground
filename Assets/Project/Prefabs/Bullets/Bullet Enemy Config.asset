@@ -34,7 +34,7 @@ MonoBehaviour:
     - rid: 8047814073862062080
       type: {class: Bullet/Config, ns: , asm: NewProject}
       data:
-        speed: 0.3
+        speed: 0.75
         radius: 0.2
         hitForce: 35
         damage: 20
